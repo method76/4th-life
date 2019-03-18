@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>KittyChain Installation</title>
+  <meta name="description" content="KittyChain Installation">
+  <link rel="stylesheet" href="/css/bootstrap.css"/>
+</head>
+
+<body>
+
+<h3>KittyChain Installation</h3>
+<h5>Database Initialized<span>: <%=isTableExist%></span></h5>
+<% if (!isTableExist) { %><button id="create-table" type="button" class="btn btn-info">Create Bucket & Index</button><% } %>
+
+<h5>Test Insert<span>: <button id="insert-test" type="button" class="btn btn-info">Test</button></span></h5>
+
+<h5>Test Delete<span>: <button id="delete-test" type="button" class="btn btn-info">Test</button></span></h5>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script>
+$(function() {
+  $("#create-table").click(function() {
+    $.getJSON('/api/init/proc?a=a', function (b, c) {
+      console.log('create table');
+    });
+  });
+  $("#insert-test").click(function() {
+    $.getJSON('/api/init/proc?a=b', function (b, c) {
+      console.log('insert test');
+    });
+  });
+  $("#delete-test").click(function() {
+    $.getJSON('/api/init/proc?a=c', function (b, c) {
+      console.log('delete test');
+    });
+  });
+});
+</script>
+</body>
+</html>

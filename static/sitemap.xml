@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://4th.life/explorer</loc>
+    <lastmod>2019-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+    <url>
+        <loc>https://4th.life/solution</loc>
+        <lastmod>2019-03-16</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://4th.life/souvenir</loc>
+        <lastmod>2019-03-16</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+</urlset>

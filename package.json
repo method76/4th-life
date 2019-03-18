@@ -1,0 +1,46 @@
+{
+  "name": "4th-life-web",
+  "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "https://4th.life",
+  "private": true,
+  "description": "The gateway to information of the 4th industry",
+  "author": {
+    "name": "Sungjoon Kim",
+    "email": "kittychain@naver.com",
+    "url": "https://github.com/method76"
+  },
+  "scripts": {
+    "start": "nuxt start",
+    "build_start": "nuxt build && nuxt start",
+    "build": "nuxt build",
+    "precommit": "npm run lint",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "test": "node_modules/.bin/mocha $(find ./ -name '*.js') --recursive -w"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "couchbase": "^2.6.3",
+    "cross-env": "^5.0.1",
+    "ejs": "^2.6.1",
+    "eslint": "^5.13.0",
+    "express": "^4.15.3",
+    "nano": "^8.0.0",
+    "node-cache": "^4.2.0",
+    "nuxt": "latest",
+    "source-map-support": "^0.4.15"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.1.0",
+    "mocha": "^6.0.2",
+    "should": "^13.2.3"
+  }
+}
