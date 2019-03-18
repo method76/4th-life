@@ -1,12 +1,14 @@
 const express = require('express')
+const scheduler = require('./scheduler')
 const env = process.env.NODE_ENV || 'development'
-const config = require('./configs/server')[env]
 
 // Create express instnace
 const app = express()
 
 // Require API routes
 const users = require('./routes/services')
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 // Import API Routes
 app.use(users)
@@ -20,4 +22,5 @@ module.exports = {
   handler: app
 }
 
+scheduler()
 // ex) usage: config.database.host

@@ -1,11 +1,11 @@
 const { Router } = require('express')
-const router = Router()
 const couchbase = require('couchbase')
-const cluster = new couchbase.Cluster('couchbase://localhost')
 const NodeCache = require( "node-cache" );
+const cluster = new couchbase.Cluster('couchbase://localhost')
 const articleCache = new NodeCache( { stdTTL: 100, checkperiod: 60 } )
-const bucketName = 'blockchain_media'
+const bucketName = 'news'
 const tkpUrl = 'https://tokenpost.kr'
+const router = Router()
 
 router.get('/init', function (req, res, next) {
   cluster.authenticate('method76', '!@Hy98657020')
@@ -101,15 +101,20 @@ router.get('/news', function (req, res, next) {
     } else {
       const query = couchbase.N1qlQuery.fromString('SELECT * FROM ' + bucketName + ' ORDER BY date DESC LIMIT 10')
       bucket.query(query, (err, rows) => {
-        let rowArr = []
-        rows.forEach((row) => {
-          console.log(row.blockchain_media)
-          let item = row.blockchain_media
-          item.id = 'tkp-' + item.link.replace('/', '')
-          item.link = tkpUrl + item.link
-          rowArr.push(item)
-        })
-        res.json({ code: 999, result: rowArr })
+        if (err) {
+          console.error('Got error: %j', err)
+          res.sendStatus(500)
+        } else {
+          let rowArr = []
+          rows.forEach((row) => {
+            console.log(row[bucketName])
+            let item = row[bucketName]
+            item.id = 'tkp-' + item.link.replace('/', '')
+            item.link = tkpUrl + item.link
+            rowArr.push(item)
+          })
+          res.json({ code: 999, result: rowArr })
+        }
       })
     }
   })

@@ -123,11 +123,11 @@
       <div class="col-lg-4 col-12 p-0">
         <h3><i class="zmdi zmdi-tv-alt-play" /> 블록체인 <strong>뉴스</strong></h3>
         <table class="table table-bordered table-hover m-b-0 articles">
-          <tbody>
+          <tbody v-if="articles.length">
             <tr v-for="item in articles" :key="item.id">
               <td>
                 <a
-                  href="https://tokenpost.kr/article-6013"
+                  v-bind:href="item.link"
                   class="text-muted ellipsis"
                   target="_blank"
                 >
@@ -708,7 +708,7 @@ import axios from 'axios'
 
 export default {
   async asyncData ({ params }) {
-    return axios.get('http://localhost:3000/api/news').then((res) => {
+    return axios.get('/api/news').then((res) => {
       return { articles: res.data.result }
     })
   },

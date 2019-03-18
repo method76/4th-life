@@ -1,11 +1,10 @@
-// 'use strict'
 const schedule = require('node-schedule')
 const couchbase = require('couchbase')
-const cluster = new couchbase.Cluster('couchbase://localhost')
-const bucketName = 'blockchain_media'
 const request = require('request')
 const cheerio = require('cheerio')
-// const service = require('./src/scheduledService')()
+
+const cluster = new couchbase.Cluster('couchbase://localhost')
+const bucketName = 'news'
 
 const tkp1 = 'https://tokenpost.kr/business'
 const tkp2 = 'https://tokenpost.kr/regulation'
@@ -17,12 +16,16 @@ const tkp7 = 'https://tokenpost.kr/briefing'
 const tkpUrl = 'https://tokenpost.kr'
 const tkpUrls = [tkp1, tkp2, tkp3, tkp4, tkp5, tkp6, tkp7]
 
+module.exports = scheduledJob
+
 /**
  * Runs every 5mins
  */
-const job = schedule.scheduleJob('*/5 * * * *', function () {
-  crawl()
-})
+function scheduledJob() {
+  schedule.scheduleJob('*/5 * * * *', function () {
+    crawl()
+  })
+}
 
 /**
  */
@@ -50,10 +53,10 @@ function crawl () {
                 , function (err, result) {
                   if (err) {
                     console.error('Got error: %j', err)
-                  } else {
-                    console.log('[upsertSuccess] ' + JSON.stringify(result))
+                    return
                   }
-                })
+              })
+              console.log('[upsertSuccess]')
             })
           }
         })
@@ -63,6 +66,8 @@ function crawl () {
 }
 
 function upsertArticle (bucket, id, datum, callback) {
+
+  // case of couchbase
   bucket.upsert(id, datum, function (err, result) {
     if (err) {
       callback(err)
