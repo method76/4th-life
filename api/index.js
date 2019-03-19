@@ -4,7 +4,6 @@ const env = process.env.NODE_ENV || 'development'
 
 // Create express instnace
 const app = express()
-
 // Require API routes
 const users = require('./routes/services')
 
