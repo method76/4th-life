@@ -1,7 +1,6 @@
 const schedule = require('node-schedule')
 const request = require('request')
 const cheerio = require('cheerio')
-const config = require('../configs/config.js')
 
 module.exports = scheduledJob
 
@@ -18,6 +17,7 @@ function scheduledJob () {
  */
 function crawl () {
   console.log('crawl')
+  const config = require('../configs/config.js')
   for (let i = 0; i < config.URLS_TKP.length; i++) {
     request.get(config.URLS_TKP[i], function (err, res, body) {
       if (!err) {
