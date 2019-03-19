@@ -36,7 +36,7 @@
               </div>
               <div class="action">
                 <a
-                  href="#"
+                  href="https://smartstore.naver.com/kchain/products/4351415497"
                   class="btn btn-success waves-effect"
                 >
                   네이버구매
