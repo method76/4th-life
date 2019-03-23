@@ -1,12 +1,13 @@
 const { Router } = require('express')
-const config = require('../../configs/config.js')
+const config = require('../../configs/config.js')()
+const couchbase = require('couchbase')
 const router = Router()
 const NodeCache = require('node-cache')
 const articleCache = new NodeCache({ stdTTL: 100, checkperiod: 60 })
 
 router.get('/init', function (req, res, next) {
   config.cluster.authenticate('method76', '!@Hy98657020')
-  const media = config.cluster.openBucket(BUCKET_NAME)
+  const media = config.cluster.openBucket(config.BUCKET_NAME)
   console.log('media ' + JSON.stringify(media))
   var isTableExist = media.connected !== null
   res.render('init', {
@@ -75,7 +76,6 @@ function createIndex (cluster, res) {
       console.error('Got error: %j', err)
       res.sendStatus(500)
     } else {
-      console.log('no error')
       const bm = bucket.manager()
       console.log('createPrimaryIndex')
       bm.createPrimaryIndex({ ignoreIfExists: true }, function (err, result) {
@@ -96,21 +96,31 @@ router.get('/news', function (req, res, next) {
       console.error('Got error: %j', err)
       res.sendStatus(500)
     } else {
-      const query = config.couchbase.N1qlQuery.fromString('SELECT * FROM ' + config.BUCKET_NAME + ' ORDER BY date DESC LIMIT 10')
+      const query = couchbase.N1qlQuery.fromString('SELECT * FROM ' + config.BUCKET_NAME
+        + ' ORDER BY date DESC LIMIT 20')
       bucket.query(query, (err, rows) => {
         if (err) {
           console.error('Got error: %j', err)
           res.sendStatus(500)
         } else {
-          let rowArr = []
+          let idx = 0
+          let rowArr1 = []
+          let rowArr2 = []
+          let rowArr3 = []
           rows.forEach((row) => {
             console.log(row[config.BUCKET_NAME])
             let item = row[config.BUCKET_NAME]
-            item.id = 'tkp-' + item.link.replace('/', '')
-            item.link = config.TKP_URL + item.link
-            rowArr.push(item)
+            if (idx < 10) {
+              rowArr1.push(item)
+            } else if (idx < 20) {
+              rowArr2.push(item)
+            } else {
+              rowArr3.push(item)
+            }
+            idx++
           })
-          res.json({ code: 999, result: rowArr })
+          // res.json({ code: 999, result: rowArr })
+          res.json({ code: 999, news1: rowArr1, news2: rowArr2, news3: rowArr3 })
         }
       })
     }

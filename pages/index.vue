@@ -15,92 +15,78 @@
 
     <div class="row m-b-10">
       <!-- 1열 -->
-      <div class="col-lg-4 col-12 p-0">
-        <h3><i class="zmdi zmdi-tv-alt-play" /> 블록체인 <strong>뉴스</strong></h3>
+      <div class="col-lg-3 col-12 p-0">
+        <h5>블록체인 뉴스</h5>
         <table class="table table-bordered table-hover m-b-0 articles">
-          <tbody v-if="articles.length">
-            <tr v-for="item in articles" :key="item.id">
+          <tbody v-if="news1.length">
+            <tr v-for="item in news1" :key="item.id">
               <td>
                 <a
                   v-bind:href="item.link"
-                  class="text-muted ellipsis"
+                  class="text-muted img-line2-text "
                   target="_blank"
                 >
-                  <span v-if="item.cate=='tkp'">[TKP]</span> {{ item.title }}
-                </a>
+                    <img class="thumb_article" v-bind:src="item.img" align="left">{{ item.title }}</a>
               </td>
             </tr>
           </tbody>
         </table>
-        <Adsense
-          data-ad-client="ca-pub-7663265873201714"
-          data-ad-slot="9604552118"
-        />
       </div>
       <!-- 2열: big image articles? -->
-      <div class="col-lg-8 col-12 p-0">
-        <div class="row m-b-10">
-          <div class="col-12">
-            <p>IMAGES</p>
-          </div>
-        </div>
-        <div class="row m-b-10">
-          <!-- 1열: SNS #1 -->
-          <div class="col-6">
-            <!-- 소셜 글 목록 #1 Start -->
-            <h3><i class="zmdi zmdi-face" /> 암호화폐 <strong>소셜네트워크</strong></h3>
-            <table class="table table-bordered table-hover m-b-0 socials">
-              <tbody>
-              <tr>
-                <td>
-                  <a
-                          href="https://tokenpost.kr/article-6013"
-                          class="text-muted ellipsis"
-                          target="_blank"
-                  >
-                    日 작년 암호화폐 관련 자금 세탁 ‘10배’ 증가
-                  </a>
-                </td>
+      <div class="col-lg-3 col-12 p-0">
+          <table class="table table-bordered table-hover m-b-0 articles">
+              <tbody v-if="news2.length">
+              <tr v-for="item in news2" :key="item.id">
+                  <td>
+                      <a
+                              v-bind:href="item.link"
+                              class="text-muted img-line2-text "
+                              target="_blank"
+                      >
+                          <img class="thumb_article" v-bind:src="item.img" align="left">{{ item.title }}</a>
+                  </td>
               </tr>
               </tbody>
-            </table>
-            <!-- 소셜 글 목록 #1 End -->
-          </div>
-          <!-- 2열: SNS #1 -->
-          <div class="col-6">
-            <p>SNS#2</p>
-          </div>
-        </div>
+          </table>
+      </div>
+    <div class="col-lg-3 col-12 p-0">
+        <table class="table table-bordered table-hover m-b-0 articles">
+            <tbody v-if="news3.length">
+            <tr v-for="item in news3" :key="item.id">
+                <td>
+                    <a
+                            v-bind:href="item.link"
+                            class="text-muted img-line2-text "
+                            target="_blank"
+                    >
+                        <img class="thumb_article" v-bind:src="item.img" align="left">{{ item.title }}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+      <div class="col-lg-3 col-12">
+        <!-- 소셜 글 목록 #1 Start -->
+        <h5>암호화폐 소셜네트워크</h5>
+        <table class="table table-bordered table-hover m-b-0 socials">
+          <tbody>
+          <tr>
+            <td>
+              <a
+                      href="https://tokenpost.kr/article-6013"
+                      class="text-muted ellipsis"
+                      target="_blank"
+              >
+                日 작년 암호화폐 관련 자금 세탁 ‘10배’ 증가
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <!-- 소셜 글 목록 #1 End -->
       </div>
     </div>
     <!-- Row end -->
-
-    <div class="row clearfix media-wrapper">
-      <div class="col-lg-4 col-12">
-        <h3 class="title-latest">
-          <i class="zmdi zmdi-trending-up" /> 암호화폐 <strong>시세</strong> <a
-            href="https://www.coingecko.com/ko"
-            target="_blank"
-          >
-            <span class="badge badge-info">
-              더보기
-            </span>
-          </a>
-        </h3>
-        <coingecko-coin-list-widget
-          coin-ids="bitcoin,eos,ethereum,ripple,mossland,mediblocx"
-          currency="krw"
-          locale="ko"
-          class="clearfix"
-        />
-      </div>
-
-      <div class="col-lg-4 col-12 right-content">
-        <div class="row clearfix media-first-row">
-
-        </div>
-      </div>
-    </div>
 
     <!-- 가로 광고 Start -->
     <div class="row">
@@ -257,20 +243,6 @@
       <div class="col">
         <div class="card w_data_1">
           <div class="body">
-            <div
-                    class="dark"
-                    style="background-image: url('/images/media_logo/ic_chainnews.png');"
-            />
-            <!--<h6 class="mt-2 mb-0">체인뉴스</h6>-->
-            <a href="https://chainnews.kr">
-              chainnews.kr
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card w_data_1">
-          <div class="body">
             <div style="background-image: url('/images/media_logo/ic_thebchain.png');" />
             <!--<h6 class="mt-2 mb-0">더비체인</h6>-->
             <a href="http://www.thebchain.co.kr">
@@ -279,6 +251,17 @@
           </div>
         </div>
       </div>
+    <div class="col">
+        <div class="card w_data_1">
+            <div class="body">
+                <div style="background-image: url('/images/media_logo/ic_cointoday.png');" />
+                <!--<h6 class="mt-2 mb-0">코인투데이</h6>-->
+                <a href="http://cointoday.co.kr">
+                    cointoday.co.kr
+                </a>
+            </div>
+        </div>
+    </div>
       <div class="col">
         <div class="card w_data_1">
           <div class="body">
@@ -290,6 +273,20 @@
           </div>
         </div>
       </div>
+        <div class="col">
+            <div class="card w_data_1">
+                <div class="body">
+                    <div
+                            class="dark"
+                            style="background-image: url('/images/media_logo/ic_chainnews.png');"
+                    />
+                    <!--<h6 class="mt-2 mb-0">체인뉴스</h6>-->
+                    <a href="https://chainnews.kr">
+                        chainnews.kr
+                    </a>
+                </div>
+            </div>
+        </div>
 
       <!-- 허브들 Starts -->
 
@@ -469,18 +466,6 @@
       <div class="col">
         <div class="card w_data_1">
           <div class="body">
-            <div style="background-image: url('/images/media_logo/ic_cointoday.png');" />
-            <!--<h6 class="mt-2 mb-0">코인투데이</h6>-->
-            <a href="http://cointoday.co.kr">
-              cointoday.co.kr
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card w_data_1">
-          <div class="body">
             <div style="background-image: url('/images/media_logo/ic_coincode.png');" />
             <!--<h6 class="mt-2 mb-0">코인코드</h6>-->
             <a href="https://coincode.kr">
@@ -558,22 +543,24 @@
 .carousel-inner, .carousel-item { height: 100%; }
 .carousel-item { background-size: cover;background-repeat: no-repeat; }
 .badge-info { background: white;color: rgb(96, 125, 139);border: 1px solid rgb(96, 125, 139); }
+.thumb_article { height: 40px; }
 </style>
 
 <script>
-import axios from 'axios'
+import axios from '../plugins/axios'
 
-const config = require('../configs/config.js')
+// const config = require('../configs/config.js')
 
 export default {
   async asyncData ({ params }) {
-    return axios.get(config.BASE_URL + '/api/news').then((res) => {
-      return { articles: res.data.result }
+    return axios.get('/api/news').then((res) => {
+      return { news1: res.data.news1, news2: res.data.news2 }
     })
   },
   data: function () {
     return {
-      articles: []
+      news1: [],
+      news2: []
     }
   }
 }

@@ -34,7 +34,12 @@ export default {
 <style>
 .table { table-layout: fixed; }
 .table td, .table th {
-    word-wrap:break-word;word-break:break-all;white-space: nowrap;
-    text-overflow: ellipsis;overflow: hidden;height: 40px;
+    overflow: hidden;height: 40px;
     vertical-align: middle; }
+.img-line2-text {
+    text-overflow: ellipsis;
+    height: 40px;
+    overflow: hidden;
+    display: inline-flex;
+}
 </style>
