@@ -1,7 +1,6 @@
 <template>
   <!-- Main Content -->
   <div class="container-fluid">
-    <div style="position:absolute; top:188px;left:50%; margin-left:-880px; width:160px;height: 600px;background-color: #fafafa;" />
     <!-- 가로 광고 Start -->
     <div class="row">
       <div class="col-12">
@@ -11,79 +10,83 @@
         />
       </div>
     </div>
+    <!-- 동영상 -->
+    <div class="row video-row">
+      <div class="col-12 video-col">
+          <video autoplay muted loop>
+              <source src="/video/mv_blockchain.mp4" type="video/mp4">
+          </video>
+      </div>
+    </div>
     <!-- 가로 광고 End -->
 
-    <div class="row m-b-10">
+    <div class="row m-b-10 article-row">
       <!-- 1열 -->
-      <div class="col-lg-3 col-12 p-0">
+      <div class="col-lg-3 col-12 p-2">
         <h5>블록체인 뉴스</h5>
-        <table class="table table-bordered table-hover m-b-0 articles">
+        <table class="table table-hover m-b-0 articles">
           <tbody v-if="news1.length">
             <tr v-for="item in news1" :key="item.id">
               <td>
                 <a
                   v-bind:href="item.link"
-                  class="text-muted img-line2-text "
+                  class="img-line2-text "
                   target="_blank"
                 >
-                    <img class="thumb_article" v-bind:src="item.img" align="left">{{ item.title }}</a>
+                  <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}</a>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
       <!-- 2열: big image articles? -->
-      <div class="col-lg-3 col-12 p-0">
-          <table class="table table-bordered table-hover m-b-0 articles">
+      <div class="col-lg-3 col-12 p-2">
+          <table class="table table-hover m-b-0 articles">
               <tbody v-if="news2.length">
               <tr v-for="item in news2" :key="item.id">
                   <td>
                       <a
                               v-bind:href="item.link"
-                              class="text-muted img-line2-text "
+                              class="img-line2-text "
                               target="_blank"
                       >
-                          <img class="thumb_article" v-bind:src="item.img" align="left">{{ item.title }}</a>
+                          <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}</a>
                   </td>
               </tr>
               </tbody>
           </table>
       </div>
-    <div class="col-lg-3 col-12 p-0">
-        <table class="table table-bordered table-hover m-b-0 articles">
+    <div class="col-lg-3 col-12 p-2">
+        <table class="table table-hover m-b-0 articles">
             <tbody v-if="news3.length">
             <tr v-for="item in news3" :key="item.id">
                 <td>
                     <a
                             v-bind:href="item.link"
-                            class="text-muted img-line2-text "
+                            class="img-line2-text "
                             target="_blank"
                     >
-                        <img class="thumb_article" v-bind:src="item.img" align="left">{{ item.title }}</a>
+                        <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}</a>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-      <div class="col-lg-3 col-12">
-        <!-- 소셜 글 목록 #1 Start -->
-        <h5>암호화폐 소셜네트워크</h5>
-        <table class="table table-bordered table-hover m-b-0 socials">
-          <tbody>
-          <tr>
-            <td>
-              <a
-                      href="https://tokenpost.kr/article-6013"
-                      class="text-muted ellipsis"
-                      target="_blank"
-              >
-                日 작년 암호화폐 관련 자금 세탁 ‘10배’ 증가
-              </a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <!-- 소셜 글 목록 #1 End -->
+      <div class="col-lg-3 col-12 p-2">
+          <table class="table table-hover m-b-0 articles">
+              <tbody v-if="news4.length">
+              <tr v-for="item in news4" :key="item.id">
+                  <td>
+                      <a
+                              v-bind:href="item.link"
+                              class="img-line2-text "
+                              target="_blank"
+                      >
+                          <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}
+                  </td>
+              </tr>
+              </tbody>
+          </table>
       </div>
     </div>
     <!-- Row end -->
@@ -536,16 +539,6 @@
   </div>
 </template>
 
-<style>
-.row h3 { margin: 10px 10px 0 10px; }
-.card .body { padding: 10px 10px; }
-.media-latest { margin-left: -15px;padding-right: 2px; }
-.carousel-inner, .carousel-item { height: 100%; }
-.carousel-item { background-size: cover;background-repeat: no-repeat; }
-.badge-info { background: white;color: rgb(96, 125, 139);border: 1px solid rgb(96, 125, 139); }
-.thumb_article { height: 40px; }
-</style>
-
 <script>
 import axios from '../plugins/axios'
 
@@ -554,13 +547,16 @@ import axios from '../plugins/axios'
 export default {
   async asyncData ({ params }) {
     return axios.get('/api/news').then((res) => {
-      return { news1: res.data.news1, news2: res.data.news2 }
+      return { news1: res.data.news1, news2: res.data.news2, news3: res.data.news3,
+        news4: res.data.news4 }
     })
   },
   data: function () {
     return {
       news1: [],
-      news2: []
+      news2: [],
+      news3: [],
+      news4: []
     }
   }
 }

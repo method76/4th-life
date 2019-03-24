@@ -11,12 +11,15 @@ const config = function () {
   const tkp7 = 'https://tokenpost.kr/briefing'
   const cluster = new couchbase.Cluster('couchbase://' + DOMAIN)
   return {
+    cluster: cluster,
     BUCKET_NAME: 'news',
+    BASE_URL: 'https://' + DOMAIN,
     URL_TKP: 'https://tokenpost.kr',
     URLS_TKP: [tkp1, tkp2, tkp3, tkp4, tkp5, tkp6, tkp7],
     URL_BLP: 'https://blockpost.com/allNews',
-    BASE_URL: 'https://' + DOMAIN,
-    cluster: cluster
+    URL_DST: 'https://dstreet.io',
+    URL_BIP: 'https://blockinpress.com/recent',
+    URL_TWC: 'https://trendw.kr/category/blockchain'
   }
 }
 
@@ -54,4 +57,3 @@ module.exports = config
 //     }
 //   }
 // }
-// module.exports : config

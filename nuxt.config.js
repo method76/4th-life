@@ -21,7 +21,6 @@ module.exports = {
       { src: '/bundles/sparkline.bundle.js', body: true },
       { src: '/bundles/c3.bundle.js', body: true },
       { src: '/bundles/mainscripts.bundle.js', body: true },
-      { src: '/js/bootstrap-select.min.js', body: true },
       { src: '/js/index.js', body: true }
     ],
     link: [
@@ -37,7 +36,6 @@ module.exports = {
     '~/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css',
     '~/assets/plugins/charts-c3/plugin.css',
     '~/assets/plugins/morrisjs/morris.min.css',
-    '~/assets/css/bootstrap-select.min.css',
     '~/assets/css/style.min.css',
     '~/static/css/main.css'
   ],

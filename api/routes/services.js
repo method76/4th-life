@@ -96,8 +96,8 @@ router.get('/news', function (req, res, next) {
       console.error('Got error: %j', err)
       res.sendStatus(500)
     } else {
-      const query = couchbase.N1qlQuery.fromString('SELECT * FROM ' + config.BUCKET_NAME
-        + ' ORDER BY date DESC LIMIT 20')
+      const query = couchbase.N1qlQuery.fromString('SELECT * FROM ' + config.BUCKET_NAME +
+        ' ORDER BY date DESC LIMIT 35')
       bucket.query(query, (err, rows) => {
         if (err) {
           console.error('Got error: %j', err)
@@ -107,20 +107,23 @@ router.get('/news', function (req, res, next) {
           let rowArr1 = []
           let rowArr2 = []
           let rowArr3 = []
+          let rowArr4 = []
           rows.forEach((row) => {
-            console.log(row[config.BUCKET_NAME])
+            // console.log(row[config.BUCKET_NAME])
             let item = row[config.BUCKET_NAME]
-            if (idx < 10) {
+            if (idx < 8) {
               rowArr1.push(item)
-            } else if (idx < 20) {
+            } else if (idx < 17) {
               rowArr2.push(item)
-            } else {
+            } else if (idx < 26) {
               rowArr3.push(item)
+            } else {
+              rowArr4.push(item)
             }
             idx++
           })
           // res.json({ code: 999, result: rowArr })
-          res.json({ code: 999, news1: rowArr1, news2: rowArr2, news3: rowArr3 })
+          res.json({ code: 999, news1: rowArr1, news2: rowArr2, news3: rowArr3, news4: rowArr4 })
         }
       })
     }
