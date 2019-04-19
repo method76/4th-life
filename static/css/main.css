@@ -18,7 +18,7 @@ section.content { margin: 0; }
     background-size: contain;padding: 1px;background-repeat: no-repeat;background-position: center;
     filter: grayscale(1);-webkit-filter: grayscale(1); }
 .navbar-brand span { font-size: 25px;font-weight: bold; }
-.navbar-brand .zmdi, .footer .zmdi { font-size: 36px; }
+.navbar-brand .zmdi, .footer .zmdi { font-size: 32px;margin: 6px 0; }
 .ellipsis { white-space: nowrap;overflow: hidden;word-break: break-all;text-overflow: ellipsis; }
 #bottomnavbar { height: 200px;text-decoration: none;text-align: right;background-color: #333;
   color: #aaa;padding: 10px 10px; }

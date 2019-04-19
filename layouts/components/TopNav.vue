@@ -44,9 +44,10 @@
           tag="li"
         >
           <a class="nav-link">
-            솔루션
+            서비스
           </a>
         </router-link>
+        <!--
         <router-link
           to="/compare"
           active-class="active"
@@ -57,6 +58,7 @@
             가격비교
           </a>
         </router-link>
+        -->
         <router-link
           to="/souvenir"
           active-class="active"
@@ -69,18 +71,6 @@
         </router-link>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        >
-        <button
-          class="btn btn-outline-success my-2 my-sm-0"
-          type="submit"
-        >
-          Search
-        </button>
       </form>
     </div>
   </nav>
@@ -92,4 +82,6 @@
     padding: 0 24px !important; }
 .btn-primary:not(:disabled):not(.disabled):active { margin-right: -70px; }
 .btn.mobile_menu { color: #fff;background-color: #ddd;border: 1px solid #666;color: #888; }
+#navbarSupportedContent > ul { margin: 0 auto; }
+.navbar .navbar-nav .nav-link:not(.btn) { font-size: 1.33em; }
 </style>

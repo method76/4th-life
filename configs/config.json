@@ -1,0 +1,25 @@
+{
+  "DOMAIN_API": "https://4th.life",
+  "couchbase": {
+    "server": "4th.life",
+    "newsBucket": "news",
+    "arbiBucket": "arbi"
+  },
+  "URL_TKP": "https://tokenpost.kr",
+  "URLS_TKP": [
+    "https://tokenpost.kr/business",
+    "https://tokenpost.kr/regulation",
+    "https://tokenpost.kr/technology",
+    "https://tokenpost.kr/investing",
+    "https://tokenpost.kr/insights",
+    "https://tokenpost.kr/people",
+    "https://tokenpost.kr/briefing"
+  ],
+  "URL_BLP": "https://blockpost.com/allNews",
+  "URL_DST": "https://dstreet.io",
+  "URL_BIP": "https://blockinpress.com/recent",
+  "URL_TWC": "https://trendw.kr/category/blockchain",
+  "URL_UBT": "https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-LTC,KRW-XRP,KRW-ETH,KRW-EOS",
+  "URL_BFX": "https://api-pub.bitfinex.com/v2/tickers?symbols=tBTCUSD,tLTCUSD,tXRPUSD,tETHUSD,tEOSUSD",
+  "URL_DAU": "https://search.naver.com/search.naver?sm=top_sug.pre&fbm=1&acr=2&acq=%ED%99%98%EC%9C%A8&qdt=0&ie=utf8&query=%ED%99%98%EC%9C%A8"
+}

@@ -39,7 +39,7 @@ export default {
 .carousel-item { background-size: cover;background-repeat: no-repeat; }
 .badge-info { background: white;color: rgb(96, 125, 139);border: 1px solid rgb(96, 125, 139); }
 .thumb_article { min-width: 89px;height: 100%;display: list-item;background-size: cover;
-    margin-right: 6px;border: 1px solid #444; }
+    margin-right: 6px;border: 1px solid #444;background-position: center; }
 .table { table-layout: fixed; }
 .table td, .table th {
     font-size: 18px;

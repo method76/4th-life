@@ -10,8 +10,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'The gateway to information of the 4th industry' }
     ],
     script: [
-      { src: '//www.googletagmanager.com/gtag/js?id=UA-46283958-4', defer: true },
-      { src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', defer: true },
+      { src: '//www.googletagmanager.com/gtag/js?id=UA-46283958-4', async: true },
+      { src: '//t1.daumcdn.net/adfit/static/ad.min.js', async: true },
       { src: '//widgets.coingecko.com/coingecko-coin-price-marquee-widget.js', body: true },
       { src: '//widgets.coingecko.com/coingecko-coin-list-widget.js', body: true },
 
@@ -60,6 +60,12 @@ module.exports = {
   },
   serverMiddleware: [
     // API middleware
-    '~/api/index.js'
-  ]
+    '~/api/app.js'
+  ],
+  modules: [
+    ['@nuxtjs/google-adsense']
+  ],
+  'google-adsense': {
+    id: 'ca-pub-2532632006378314'
+  }
 }

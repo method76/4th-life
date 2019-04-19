@@ -1,16 +1,6 @@
-<script src="../api/routes/services.js"></script>
 <template>
   <!-- Main Content -->
   <div class="container-fluid">
-    <!-- 가로 광고 Start -->
-    <div class="row">
-      <div class="col-12">
-        <Adsense
-          data-ad-client="ca-pub-7663265873201714"
-          data-ad-slot="3941948313"
-        />
-      </div>
-    </div>
     <!-- 동영상 -->
     <div class="row video-row">
       <div class="col-12 video-col">
@@ -19,6 +9,23 @@
           </video>
       </div>
     </div>
+    <!-- 가로 광고 Start -->
+    <!--
+    <div class="row">
+      <div class="col-lg-6 col-12 ad-col">
+          <ins class="kakao_ad_area" style="display:none;"
+               data-ad-unit    = "DAN-rl2caecyi6w3"
+               data-ad-width   = "728"
+               data-ad-height  = "90"></ins>
+      </div>
+      <div class="col-lg-6 col-12 ad-col">
+          <ins class="kakao_ad_area" style="display:none;"
+               data-ad-unit    = "DAN-1iykhjnjexs2s"
+               data-ad-width   = "728"
+               data-ad-height  = "90"></ins>
+      </div>
+    </div>
+    -->
     <!-- 가로 광고 End -->
 
     <div class="row m-b-10 article-row">
@@ -46,8 +53,7 @@
               <tbody v-if="news2.length">
               <tr v-for="item in news2" :key="item.id">
                   <td>
-                      <a
-                              v-bind:href="item.link"
+                      <a v-bind:href="item.link"
                               class="img-line2-text "
                               target="_blank"
                       >
@@ -106,17 +112,17 @@
     <div class="row media-wrapper second clearfix">
       <div class="col">
         <a href="https://tokenpost.kr">
-          <div style="background-image: url('/images/media_logo/ic_tokenpost.svg');" />
+          <div style="background-image: url('/images/media_logo/ic_tkp.svg');" />
         </a>
       </div>
       <div class="col">
         <a href="https://dstreet.io">
-            <div style="background-image: url('/images/media_logo/ic_dstreet.png');" />
+            <div style="background-image: url('/images/media_logo/ic_dst.png');" />
         </a>
       </div>
       <div class="col">
         <a href="https://blockinpress.com">
-          <div style="background-image: url('/images/media_logo/ic_blockinpress.png');" />
+          <div style="background-image: url('/images/media_logo/ic_bip.png');" />
         </a>
       </div>
       <div class="col">
@@ -132,7 +138,7 @@
 
       <div class="col">
         <a href="https://blockpost.com">
-          <div style="background-image: url('/images/media_logo/ic_theblockpost.png');" />
+          <div style="background-image: url('/images/media_logo/ic_blp.png');" />
         </a>
       </div>
       <div class="col">
@@ -308,10 +314,11 @@
   </div>
 </template>
 
+<style>
+.ad-col { overflow: hidden;height: 90px;padding: 0;}
+</style>
 <script>
 import axios from '../plugins/axios'
-
-// const config = require('../configs/config.js')
 
 export default {
   async asyncData ({ params }) {
