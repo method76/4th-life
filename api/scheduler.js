@@ -19,7 +19,7 @@ Date.prototype.YYYYMMDDHHMM = function () {
 
 function crawlCrypto() {
   console.log('crawlCrypto');
-  const time = new Date().YYYYMMDDHHMM();
+  const time = parseInt(new Date().YYYYMMDDHHMM(), 10);
   request.get(config.URL_UBT, (err1, res, body) => {
     if (!err1) {
       const jsonbody = JSON.parse(body);
@@ -30,9 +30,9 @@ function crawlCrypto() {
         const symbol = jsonbody[i].market.replace('KRW-', '');
         arbi.upsert(time + '-UBT-' + symbol, {
           exchange, symbol, price, time
-        }, (err3, result) => {
-          if (err3) {
-            console.error('Got error: %j', err3);
+        }, (err2, result) => {
+          if (err2) {
+            console.error('Got error: %j', err2);
           }
         });
       }
@@ -48,9 +48,9 @@ function crawlCrypto() {
         const symbol = jsonbody[i][0].replace('t', '').replace('USD', '');
         arbi.upsert(time + '-BFX-' + symbol, {
           exchange, symbol, price, time
-        }, (err3, result) => {
-          if (err3) {
-            console.error('Got error: %j', err3);
+        }, (err2, result) => {
+          if (err2) {
+            console.error('Got error: %j', err2);
           }
         });
       }
@@ -58,7 +58,6 @@ function crawlCrypto() {
   });
 }
 function crawlRate() {
-  console.log('crawlRate');
   const options = {
     url: config.URL_DAU,
     headers: {
@@ -116,9 +115,9 @@ function crawlBlp() {
         const content = $(elem).find('.entry-excerpt p').html();
         news.upsert(uid, {
           id: uid, link, cate, title, content, date, img: imgSrc,
-        }, (err3, result) => {
-          if (err3) {
-            console.error('Got error: %j', err3);
+        }, (err2, result) => {
+          if (err2) {
+            console.error('Got error: %j', err2);
           }
         });
       });
@@ -127,6 +126,7 @@ function crawlBlp() {
 }
 
 /**
+ * 토큰포스트
  */
 function crawlTkp() {
   console.log('crawlTkp');
@@ -152,9 +152,86 @@ function crawlTkp() {
             const content = $(elem).find('.articleListCont').text();
             news.upsert(uid, {
               id: uid, link: config.URL_TKP + link, cate, title, content, date, img: imgSrc,
-            }, (err3, result) => {
-              if (err3) {
-                console.error('Got error: %j', err3);
+            }, (err2, result) => {
+              if (err2) {
+                console.error('Got error: %j', err2);
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+}
+
+/**
+ * Decenter
+ */
+function crawlDct() {
+  console.log('crawlDct');
+  for (let i = 0; i < config.URLS_DCT.length; i++) {
+    request.get(config.URLS_DCT[i], (err1, res, body) => {
+      if (!err1) {
+        // console.log('body ' + body)
+        const $ = cheerio.load(body);
+        $('.news_list li').each((idx, elem) => {
+          const link = $(elem).find('dt a').attr('href');
+          if (typeof (link) !== 'undefined') {
+            const imgSrc = $(elem).find('p img').attr('src');
+            // https://tokenpost.kr + href
+            const uid = `dct-${link.replace('/NewsView/', '').replace('/', '-')}`;
+            const cate = 'dct';
+            const title = $(elem).find('dt span').text();
+            // 2019-02-15 11:54
+            const date = $(elem).find('span.letter').text().trim()
+              .replace('-', '')
+              .replace('-', '');
+            const content = $(elem).find('dd a').text();
+            news.upsert(uid, {
+              id: uid, link: config.URL_DCT + link, cate, title, content, date, img: imgSrc,
+            }, (err2, result) => {
+              if (err2) {
+                console.error('Got error: %j', err2);
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+}
+
+function crawlCnr() {
+  console.log('crawlCnr');
+  for (let i = 0; i < config.URLS_CNR.length; i++) {
+    request.get(config.URLS_CNR[i], (err1, res, body) => {
+      if (!err1) {
+        // console.log('body ' + body)
+        const $ = cheerio.load(body);
+        $('#sub_read_list .sub_read_list_box').each((idx, elem) => {
+          const link = $(elem).find('dt a').attr('href');
+          if (typeof (link) !== 'undefined') {
+            let imgSrc = $(elem).find('.img_file img').attr('src');
+            if (typeof (imgSrc) !== 'undefined') {
+              imgSrc = imgSrc.replace('.', '');
+            }
+            // https://tokenpost.kr + href
+            const uid = `cnr-${link.replace('/', '')}`;
+            const cate = 'cnr';
+            const title = $(elem).find('dt a').text();
+            // 2019-02-15 11:54
+            const date = $(elem).find('.etc').text().replace('&nbsp; | &nbsp; ', '').trim()
+              .replace('.', '')
+              .replace('.', '')
+              .replace(' ', '')
+              .replace(':', '');
+            const content = $(elem).find('.sbody a').text();
+            news.upsert(uid, {
+              id: uid, link: config.URL_CNR + link, cate, title, content, date,
+              img: config.URL_CNR + imgSrc,
+            }, (err2, result) => {
+              if (err2) {
+                console.error('Got error: %j', err2);
               }
             });
           }
@@ -193,9 +270,9 @@ function crawlDst() {
         const content = '';
         news.upsert(uid, {
           id: uid, link, cate, title, content, date, img: imgSrc,
-        }, (err3, result) => {
-          if (err3) {
-            console.error('Got error: %j', err3);
+        }, (err2, result) => {
+          if (err2) {
+            console.error('Got error: %j', err2);
           }
         });
       });
@@ -235,57 +312,13 @@ function crawlBip() {
           const content = $(elem).find('.entry-excerpt p:first-child').text();
           news.upsert(uid, {
             id: uid, link, cate, title, content, date, img: imgSrc,
-          }, (err3, result) => {
-            if (err3) {
-              console.error('Got error: %j', err3);
+          }, (err2, result) => {
+            if (err2) {
+              console.error('Got error: %j', err2);
             }
           });
         });
       } catch (e) { console.log(`e ${e.message}`); }
-    }
-  });
-}
-
-/**
- * Difficult
- * @param config
- */
-function crawlTwc() {
-  // .listing article    { .title a text() href
-  console.log('crawlTwc');
-  const options = {
-    url: config.URL_TWC,
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:24.0) Gecko/20100101 Firefox/24.0',
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  };
-  request.get(options, (err1, res, body) => {
-    if (!err1) {
-      const $ = cheerio.load(body);
-      config.cluster.authenticate('method76', '!@Hy98657020');
-      $('.listing .listing-item a.b-loaded').each((idx, elem) => {
-        const link = $(elem).attr('href').firstChild;
-        console.log(`title elem ${$(elem).find('.title')}`);
-        const imgSrc = $(elem).css('background-image');
-        console.log(`imgSrc ${imgSrc}`);
-        if (typeof (bgUrl) !== 'undefined') {
-          const uid = `twc-${link.split('https://trendw.kr/')[1].split('.t1m')[0]}`;
-          const cate = 'twc';
-          const title = $(elem).find('.title a').text().trim();
-          const date = $(elem).find('time').text(); // 2018-11-27
-          const content = $(elem).find('.post-summary').text().trim();
-          news.upsert(uid, {
-            id: uid, link, cate, title, content, date, img: imgSrc,
-          }, (err3, result) => {
-            if (err3) {
-              console.error('Got error: %j', err3);
-            }
-          });
-        } else {
-          console.log('no style attr');
-        }
-      });
     }
   });
 }
@@ -298,9 +331,9 @@ function scheduledJob() {
     config = require('../configs/config');
     news = require('./app').newsBucket();
     arbi = require('./app').arbiBucket();
-    switch (index % 5) {
+    switch (index % 6) {
       case 0:
-        crawlDst();
+        crawlCnr();
         break;
       case 1:
         crawlBlp();
@@ -312,7 +345,10 @@ function scheduledJob() {
         crawlBip();
         break;
       case 4:
-        // crawlTwc(config)
+        crawlDst()
+        break;
+      case 5:
+        crawlDct();
         break;
       default:
     }

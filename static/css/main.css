@@ -28,7 +28,7 @@ table.articles td, table.socials td { padding: 0; }
 .footer-copy { font-size: 17px; }
 .row h3 { margin: 10px;border-bottom: 3px solid #1565c0; }
 .row.second { margin: 0 -12px;padding: 0 10px; }
-.footer { background-color: #264fa3;padding: 10px 20px; }
+.footer { background-color: #f0f0f0; padding: 10px 20px; }
 .footer p { margin-bottom: 0; }
 .card { margin-bottom: 10px; }
 .ticker-area { padding: 0; }

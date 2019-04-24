@@ -28,5 +28,4 @@ TrustLogo("/certs/positivessl_trust_seal_md_167x42.png", "CL1", "none");
 .ssl-cert { width: 159px;height: 33px; }
 .zmdi { font-size: 25px; }
 .container-fluid.footer .col-12 { padding: 0; }
-.container-fluid.footer p, .container-fluid.footer a { color: white; }
 </style>

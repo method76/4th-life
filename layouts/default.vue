@@ -42,11 +42,11 @@ export default {
     margin-right: 6px;border: 1px solid #444;background-position: center; }
 .table { table-layout: fixed; }
 .table td, .table th {
-    font-size: 18px;
+    font-size: 17px;
     overflow: hidden;height: 50px;vertical-align: middle;
     border-bottom: 1px dashed #436dc4;border-top: 0; }
 .img-line2-text {
-    text-overflow: ellipsis;height: 50px;overflow: hidden;
-    display: inline-flex;line-height: 24px;font-weight: 600;
+    text-overflow: ellipsis;height: 56px;overflow: hidden;
+    display: inline-flex;line-height: 19px;font-weight: 600;
 }
 </style>

@@ -35,7 +35,7 @@
         <table class="table table-hover m-b-0 articles">
           <tbody v-if="news1.length">
             <tr v-for="item in news1" :key="item.id">
-              <td>
+              <td v-bind:class="['media_logo', item.cate]">
                 <a
                   v-bind:href="item.link"
                   class="img-line2-text "
@@ -52,7 +52,7 @@
           <table class="table table-hover m-b-0 articles">
               <tbody v-if="news2.length">
               <tr v-for="item in news2" :key="item.id">
-                  <td>
+                  <td v-bind:class="['media_logo', item.cate]">
                       <a v-bind:href="item.link"
                               class="img-line2-text "
                               target="_blank"
@@ -67,11 +67,11 @@
         <table class="table table-hover m-b-0 articles">
             <tbody v-if="news3.length">
             <tr v-for="item in news3" :key="item.id">
-                <td>
+                <td v-bind:class="['media_logo', item.cate]">
                     <a
-                            v-bind:href="item.link"
-                            class="img-line2-text "
-                            target="_blank"
+                        v-bind:href="item.link"
+                        class="img-line2-text "
+                        target="_blank"
                     >
                         <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}</a>
                 </td>
@@ -83,13 +83,13 @@
           <table class="table table-hover m-b-0 articles">
               <tbody v-if="news4.length">
               <tr v-for="item in news4" :key="item.id">
-                  <td>
-                      <a
-                              v-bind:href="item.link"
-                              class="img-line2-text "
-                              target="_blank"
+                  <td v-bind:class="['media_logo', item.cate]">
+                    <a
+                      v-bind:href="item.link"
+                      class="img-line2-text "
+                      target="_blank"
                       >
-                          <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}
+                    <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}
                   </td>
               </tr>
               </tbody>
@@ -99,6 +99,7 @@
     <!-- Row end -->
 
     <!-- 가로 광고 Start -->
+    <!--
     <div class="row">
       <div class="col-12">
         <Adsense
@@ -107,6 +108,7 @@
         />
       </div>
     </div>
+    -->
     <!-- 가로 광고 End -->
 
     <div class="row media-wrapper second clearfix">
@@ -126,13 +128,8 @@
         </a>
       </div>
       <div class="col">
-        <a href="https://trendw.kr/category/blockchain">
-          <div style="background-image: url('/images/media_logo/ic_trendwatching.jpg');" />
-        </a>
-      </div>
-      <div class="col">
         <a href="https://www.blockmedia.co.kr">
-            <div style="background-image: url('/images/media_logo/ic_blockmedia.png');" />
+            <div style="background-image: url('/images/media_logo/ic_blm.png');" />
         </a>
       </div>
 
@@ -143,14 +140,19 @@
       </div>
       <div class="col">
         <a href="https://www.decenter.kr">
-            <div style="background-image: url('/images/media_logo/ic_decenter.png');" />
+            <div style="background-image: url('/images/media_logo/ic_dct.png');" />
         </a>
       </div>
-      <div class="col">
-        <a href="https://blockdaily.com">
-            <div style="background-image: url('/images/media_logo/ic_blockdaily.png');" />
-        </a>
-      </div>
+        <div class="col">
+            <a href="http://www.coinreaders.com">
+                <div style="background-image: url('/images/media_logo/ic_cnr.png');" />
+            </a>
+        </div>
+        <div class="col">
+            <a href="http://cointoday.co.kr">
+                <div style="background-image: url('/images/media_logo/ic_ctd.png');" />
+            </a>
+        </div>
       <div class="col">
         <a href="https://www.coindeskkorea.com" class="ellipse">
           <div style="background-image: url('/images/media_logo/ic_coindeskkorea.png');" />
@@ -161,37 +163,37 @@
           <div style="background-image: url('/images/media_logo/ic_paxnetnews.png');" />
         </a>
       </div>
-      <div class="col">
-        <a href="http://www.coinreaders.com">
-          <div style="background-image: url('/images/media_logo/ic_coinreaders.jpg');" />
-        </a>
-      </div>
-      <div class="col">
-        <a href="http://www.4th.kr/news/articleList.html?sc_section_code=S1N10&view_type=sm">
-          <div style="background-image: url('/images/media_logo/ic_4th.png');" />
-          </a>
-      </div>
-      <div class="col">
-        <a href="http://www.thebchain.co.kr">
-          <div style="background-image: url('/images/media_logo/ic_thebchain.png');" />
-        </a>
-      </div>
-    <div class="col">
-        <a href="http://cointoday.co.kr">
-            <div style="background-image: url('/images/media_logo/ic_cointoday.png');" />
-        </a>
-    </div>
+        <div class="col">
+            <a href="https://trendw.kr/category/blockchain">
+                <div style="background-image: url('/images/media_logo/ic_trendwatching.jpg');" />
+            </a>
+        </div>
       <div class="col">
         <a href="http://blocktimestv.com">
           <div style="background-image: url('/images/media_logo/ic_blocktimestvdotcom.png');" />
         </a>
       </div>
         <div class="col">
-            <a href="https://chainnews.kr">
-                <div class="dark" style="background-image: url('/images/media_logo/ic_chainnews.png');"/>
+            <a href="https://blockdaily.com">
+                <div style="background-image: url('/images/media_logo/ic_blockdaily.png');" />
             </a>
         </div>
-
+        <div class="col">
+            <a href="https://chainnews.kr">
+                <div class="dark"
+                     style="background-image: url('/images/media_logo/ic_chainnews.png');"/>
+            </a>
+        </div>
+        <div class="col">
+            <a href="http://www.thebchain.co.kr">
+                <div style="background-image: url('/images/media_logo/ic_tbc.png');" />
+            </a>
+        </div>
+        <div class="col">
+            <a href="http://www.4th.kr/news/articleList.html?sc_section_code=S1N10&view_type=sm">
+                <div style="background-image: url('/images/media_logo/ic_4th.png');" />
+            </a>
+        </div>
       <!-- 허브들 Starts -->
 
       <div class="col">
@@ -208,7 +210,8 @@
 
       <div class="col">
         <a href="http://cryptograph.co.kr">
-            <div class="dark" style="background-image: url('/images/media_logo/ic_cryptograph.png');"
+            <div class="dark"
+                 style="background-image: url('/images/media_logo/ic_cryptograph.png');"
             />
         </a>
       </div>
@@ -241,7 +244,8 @@
 
       <div class="col">
         <a href="https://kr.investing.com/news/cryptocurrency-news">
-            <div class="dark" style="background-image: url('/images/media_logo/ic_investingcom.png');" />
+            <div class="dark"
+                 style="background-image: url('/images/media_logo/ic_investingcom.png');" />
         </a>
       </div>
 
@@ -258,7 +262,8 @@
 
       <div class="col">
         <a href="https://kr.coinness.com">
-            <div class="dark" style="background-image: url('/images/media_logo/ic_coinness.png');"></div>
+            <div class="dark"
+                 style="background-image: url('/images/media_logo/ic_coinness.png');"></div>
         </a>
       </div>
       <div class="col">
@@ -302,6 +307,7 @@
     <!-- Row End -->
 
     <!-- 가로 광고 Start -->
+    <!--
     <div class="row">
       <div class="col-12">
         <Adsense
@@ -310,13 +316,26 @@
         />
       </div>
     </div>
+    -->
     <!-- 가로 광고 End -->
   </div>
 </template>
 
 <style>
-.ad-col { overflow: hidden;height: 90px;padding: 0;}
+.ad-col { overflow: hidden;height: 60px;padding: 0;}
+.media_logo { background-size: 80px; background-repeat: no-repeat;
+    background-position: 100% 96%; }
+.media_logo a { color: rgba(0,0,0,0.7); }
+.tkp { background-image: url('/images/media_logo/ic_tkp.svg'); }
+.dst { background-image: url('/images/media_logo/ic_dst.png'); }
+.bip { background-image: url('/images/media_logo/ic_bip.png'); }
+.blp { background-image: url('/images/media_logo/ic_blp.png'); }
+.blm { background-image: url('/images/media_logo/ic_blm.png'); }
+.dct { background-image: url('/images/media_logo/ic_dct.png'); }
+.cnr { background-image: url('/images/media_logo/ic_cnr.png'); }
+.ctd { background-image: url('/images/media_logo/ic_ctd.png'); }
 </style>
+
 <script>
 import axios from '../plugins/axios'
 

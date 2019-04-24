@@ -28,37 +28,15 @@
     >
       <ul class="navbar-nav mr-auto">
         <router-link
-          to="/explorer"
+          to="/price"
           active-class="active"
           class="nav-item"
           tag="li"
         >
           <a class="nav-link">
-            블록탐색
+            김치프리미엄
           </a>
         </router-link>
-        <router-link
-          to="/solution"
-          active-class="active"
-          class="nav-item"
-          tag="li"
-        >
-          <a class="nav-link">
-            서비스
-          </a>
-        </router-link>
-        <!--
-        <router-link
-          to="/compare"
-          active-class="active"
-          class="nav-item"
-          tag="li"
-        >
-          <a class="nav-link">
-            가격비교
-          </a>
-        </router-link>
-        -->
         <router-link
           to="/souvenir"
           active-class="active"
@@ -66,9 +44,29 @@
           tag="li"
         >
           <a class="nav-link">
-            기념품샵
+            쇼핑몰
           </a>
         </router-link>
+          <router-link
+                  to="/solution"
+                  active-class="active"
+                  class="nav-item"
+                  tag="li"
+          >
+              <a class="nav-link">
+                  기술서비스
+              </a>
+          </router-link>
+          <router-link
+                  to="/explorer"
+                  active-class="active"
+                  class="nav-item"
+                  tag="li"
+          >
+              <a class="nav-link">
+                  블록탐색
+              </a>
+          </router-link>
       </ul>
       <form class="form-inline my-2 my-lg-0">
       </form>

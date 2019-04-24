@@ -104,7 +104,8 @@ export default {
   },
   methods: {
     searchTx(idx) {
-      window.open("https://www.blockchain.com/ko/explorer", "_blank");
+      // https://live.blockcypher.com/btc/tx/
+      window.open("https://live.blockcypher.com/btc/tx/", "_blank");
     }
   }
 }
