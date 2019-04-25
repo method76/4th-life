@@ -1,12 +1,13 @@
 const schedule = require('node-schedule');
 const request = require('request');
 const cheerio = require('cheerio');
+const level = require('../configs/db.js');
 
 let news = null;
 let arbi = null;
 let config = null;
 let index = 0;
-let krwPrice = 1130;
+let krwPrice = 0;
 
 Date.prototype.YYYYMMDDHHMM = function () {
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
@@ -18,7 +19,10 @@ Date.prototype.YYYYMMDDHHMM = function () {
 };
 
 function crawlCrypto() {
-  console.log('crawlCrypto');
+  if (krwPrice===0) {
+    console.error('Got error: no krw price found');
+    return;
+  }
   const time = parseInt(new Date().YYYYMMDDHHMM(), 10);
   request.get(config.URL_UBT, (err1, res, body) => {
     if (!err1) {
@@ -56,7 +60,10 @@ function crawlCrypto() {
       }
     }
   });
+
+  console.log('crawlCrypto finished ' + krwPrice);
 }
+
 function crawlRate() {
   const options = {
     url: config.URL_DAU,
@@ -74,8 +81,13 @@ function crawlRate() {
       try {
         let krwPriceStr = $("#_cs_foreigninfo strong").text().replace(',', '')
           .replace('원', '').trim();
-        krwPrice = parseFloat(krwPriceStr);
-        console.log('crawlRate ' + krwPrice);
+        level.put('krwPrice', parseFloat(krwPriceStr), function (err2) {
+          if (err2) return console.error('Got error: %j', err2);
+          level.get('krwPrice', function (err3, value) {
+            if (err3) return console.error('Got error: %j', err3);
+            krwPrice = value;
+          });
+        });
       } catch (e) {
         console.log('e ' + e.message);
       }
@@ -220,7 +232,7 @@ function crawlCnr() {
             const cate = 'cnr';
             const title = $(elem).find('dt a').text();
             // 2019-02-15 11:54
-            const date = $(elem).find('.etc').text().replace('&nbsp; | &nbsp; ', '').trim()
+            const date = $(elem).find('.etc').text().split('|')[1].trim()
               .replace('.', '')
               .replace('.', '')
               .replace(' ', '')
@@ -234,6 +246,81 @@ function crawlCnr() {
                 console.error('Got error: %j', err2);
               }
             });
+          }
+        });
+      }
+    });
+  }
+}
+
+function crawlCtd() {
+  console.log('crawlCtd');
+  for (let i = 0; i < config.URLS_CTD.length; i++) {
+    request.get(config.URLS_CTD[i], (err1, res, body) => {
+      if (!err1) {
+        // console.log('body ' + body)
+        const $ = cheerio.load(body);
+        $('.td-ss-main-content .td_module_wrap').each((idx, elem) => {
+          const link = $(elem).find('h3 a').attr('href');
+          if (typeof (link) !== 'undefined') {
+            let img = $(elem).find('.td-module-thumb img').attr('src');
+            const id = `ctd-${link.replace('http://cointoday.co.kr/', '').replace('/', '')
+              .replace('/', '')}`;
+            const cate = 'ctd';
+            const title = $(elem).find('h3 a').attr('title');
+            // 2019-02-15 11:54
+            let date = $(elem).find('.entry-date').text().trim()
+              .replace('년', '').replace('월', '').replace('일', '').replace(':', '');
+            const dateSpl = date.split(' ');
+            date = dateSpl[0];
+            if (dateSpl[1].length<2) {
+              date += '0' + dateSpl[1];
+            } else {
+              date += dateSpl[1];
+            }
+            if (dateSpl[2].length<2) {
+              date += '0' + dateSpl[2];
+            } else {
+              date += dateSpl[2];
+            }
+            date += dateSpl[3];
+            const content = $(elem).find('.td-excerpt').text();
+            news.upsert(id, { id, link, cate, title, content, date, img },
+              (err2, result) => {
+                if (err2) {
+                  console.error('Got error: %j', err2);
+                }
+              });
+          }
+        });
+      }
+    });
+  }
+}
+
+function crawlBlm() {
+  console.log('crawlBlm');
+  for (let i = 0; i < config.URLS_BLM.length; i++) {
+    request.get(config.URLS_BLM[i], (err1, res, body) => {
+      if (!err1) {
+        const $ = cheerio.load(body);
+        $('.paginated_content article').each((idx, elem) => {
+          const link = $(elem).find('.header a').attr('href');
+          if (typeof (link) !== 'undefined') {
+            let img = $(elem).find('.header img').attr('src');
+            const cate = 'blm';
+            const id = cate + '-' + $(elem).attr('id');
+            const title = $(elem).find('.et-accent-color').text();
+            const date = new Date().YYYYMMDDHHMM();
+            const content = $(elem).find('.entry-summary p').text();
+            news.insert(id, { id, link, cate, title, content, date, img },
+              (err2, result) => {
+                if (err2) {
+                  if (!err2.message.startsWith('The key')) {
+                    console.error('Got error: %j', err2);
+                  }
+                }
+              });
           }
         });
       }
@@ -266,7 +353,7 @@ function crawlDst() {
         if (typeof (link.split('?id=N')[1]) !== 'undefined') {
           date = link.split('?id=N')[1].substring(0, 12); // ?일전
         }
-        if (date === '') { date = new Date().YYYYMMDDHHMM; }
+        if (date === '') { date = new Date().YYYYMMDDHHMM(); }
         const content = '';
         news.upsert(uid, {
           id: uid, link, cate, title, content, date, img: imgSrc,
@@ -331,9 +418,14 @@ function scheduledJob() {
     config = require('../configs/config');
     news = require('./app').newsBucket();
     arbi = require('./app').arbiBucket();
-    switch (index % 6) {
+    if (index==0) {
+      crawlRate();
+    } else {
+      crawlCrypto();
+    }
+    switch (index % 8) {
       case 0:
-        crawlCnr();
+        crawlBlm();
         break;
       case 1:
         crawlBlp();
@@ -350,11 +442,13 @@ function scheduledJob() {
       case 5:
         crawlDct();
         break;
+      case 6:
+        crawlCnr();
+        break;
+      case 7:
+        crawlCtd();
+        break;
       default:
-    }
-    crawlCrypto();
-    if (index==0) {
-      crawlRate();
     }
     index += 1;
     if (index === 100) {

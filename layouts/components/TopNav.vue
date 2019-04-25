@@ -27,6 +27,16 @@
       class="collapse navbar-collapse"
     >
       <ul class="navbar-nav mr-auto">
+          <router-link
+                  to="/"
+                  active-class="active"
+                  class="nav-item"
+                  tag="li"
+          >
+              <a class="nav-link">
+                  미디어
+              </a>
+          </router-link>
         <router-link
           to="/price"
           active-class="active"

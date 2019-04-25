@@ -43,8 +43,7 @@ export default {
 .table { table-layout: fixed; }
 .table td, .table th {
     font-size: 17px;
-    overflow: hidden;height: 50px;vertical-align: middle;
-    border-bottom: 1px dashed #436dc4;border-top: 0; }
+    overflow: hidden;height: 50px;vertical-align: middle; }
 .img-line2-text {
     text-overflow: ellipsis;height: 56px;overflow: hidden;
     display: inline-flex;line-height: 19px;font-weight: 600;

@@ -36,6 +36,24 @@
     "http://www.coinreaders.com/sub.html?section=sc5",
     "http://www.coinreaders.com/sub.html?section=sc6"
   ],
+  "URL_CTD": "http://cointoday.co.kr",
+  "URLS_CTD": [
+    "http://cointoday.co.kr/category/all-news/",
+    "http://cointoday.co.kr/category/all-blog/",
+    "http://cointoday.co.kr/category/exchanges/",
+    "http://cointoday.co.kr/category/all-ico/"
+  ],
+  "URL_BLM": "https://www.blockmedia.co.kr",
+  "URLS_BLM": [
+    "https://www.blockmedia.co.kr/archives/category/market",
+    "https://www.blockmedia.co.kr/archives/category/policy",
+    "https://www.blockmedia.co.kr/archives/category/press",
+    "https://www.blockmedia.co.kr/archives/category/chaincoin",
+    "https://www.blockmedia.co.kr/archives/category/for-u",
+    "https://www.blockmedia.co.kr/archives/category/data-research",
+    "https://www.blockmedia.co.kr/archives/category/tv",
+    "https://www.blockmedia.co.kr/archives/category/event"
+  ],
   "URL_UBT": "https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-LTC,KRW-XRP,KRW-ETH,KRW-EOS",
   "URL_BFX": "https://api-pub.bitfinex.com/v2/tickers?symbols=tBTCUSD,tLTCUSD,tXRPUSD,tETHUSD,tEOSUSD",
   "URL_DAU": "https://search.naver.com/search.naver?sm=top_sug.pre&fbm=1&acr=2&acq=%ED%99%98%EC%9C%A8&qdt=0&ie=utf8&query=%ED%99%98%EC%9C%A8"

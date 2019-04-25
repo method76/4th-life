@@ -1,9 +1,10 @@
-const { Router } = require('express')
-const config = require('../../configs/config')
-const router = Router()
+const { Router } = require('express');
+const config = require('../../configs/config');
 const couchbase = require('couchbase')
 const NodeCache = require('node-cache')
+const level = require('../../configs/db.js');
 const articleCache = new NodeCache({ stdTTL: 100, checkperiod: 60 })
+const router = Router();
 
 router.get('/init', function (req, res, next) {
   const isTableExist = db.connected !== null
@@ -58,9 +59,9 @@ function createIndex (cluster, res) {
   bm.createPrimaryIndex({ ignoreIfExists: true }, function (err, result) {
     if (err) {
       console.error('Got error: %j', err)
-      res.sendStatus(500)
+      res.sendStatus(500);
     } else {
-      res.json( {code: 999, msg: 'index of bucket created'} )
+      res.json( {code: 999, msg: 'index of bucket created'} );
     }
   })
 }
@@ -110,7 +111,15 @@ router.get('/arbi', function (req, res, next) {
       console.error('Got error: %j', err2)
       res.sendStatus(500)
     } else {
-      res.json(rows)
+      level.get('krwPrice', function(err3, value) {
+        if (err3) {
+          console.error('Got error: %j', err3)
+          res.sendStatus(500);
+        } else {
+          console.log('price ' + value);
+          res.json({'usd-krw': value, result: rows});
+        }
+      });
     }
   })
 })

@@ -322,6 +322,7 @@
 </template>
 
 <style>
+.table td, .table th { border-bottom: 1px dashed #436dc4;border-top: 0; }
 .ad-col { overflow: hidden;height: 60px;padding: 0;}
 .media_logo { background-size: 80px; background-repeat: no-repeat;
     background-position: 100% 96%; }
