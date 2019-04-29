@@ -1,16 +1,17 @@
 html, body {
-  font-family: "Roboto", apple-system, BlinkMacSystemFont, "Segoe UI", 'Raleway', 'Noto Sans KR', "Comfortaa", 'Rajdhani', "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif, "Malgun Gothic";
+  font-family: 'Noto Sans KR',Roboto,apple-system,BlinkMacSystemFont,'Segoe UI','Raleway','Comfortaa'
+    ,Rajdhani,'Helvetica Neue',Helvetica,Arial,sans-serif,'Malgun Gothic';
   -webkit-font-smoothing: antialiased;color: #444; }
 a { color: #444; }
 a:hover, a:focus { color: inherit; }
 h5 { border-bottom: 4px solid #264fa3; }
-.contents-wrapper { margin-top: 57px; }
+.contents-wrapper { padding-top: 57px; }
 .navbar-brand { margin: 0; padding: 0; }
 .navbar-brand img { height: 40px; }
 #leftsidebar { max-width: 170px;top: 33px; }
 .sidebar .menu .list { margin: 0px; }
 ul.list li { padding-left: 10px; }
-section.content { margin: 0; }
+section.content { margin: 0;line-height: 1; }
 .dark { background-color: #444; }
 .media-wrapper-parent { padding-right: 10px;padding-left: 10px; }
 .media-wrapper.second .col { margin-bottom: 6px;padding: 0; }
@@ -25,7 +26,8 @@ section.content { margin: 0; }
 #bottomnavbar .cert-logos img { float: right; }
 .nav-tabs>.nav-item>.nav-link, .nav-tabs>.nav-item>.nav-link i.zmdi { font-size: 20px; }
 table.articles td, table.socials td { padding: 0; }
-.footer-copy { font-size: 17px; }
+.footer-copy { font-size: 12px; }
+.footer a i { color: #888;font-size: 22px;line-height: 32px; }
 .row h3 { margin: 10px;border-bottom: 3px solid #1565c0; }
 .row.second { margin: 0 -12px;padding: 0 10px; }
 .footer { background-color: #f0f0f0; padding: 10px 20px; }
@@ -42,8 +44,8 @@ table.articles td, table.socials td { padding: 0; }
 .title-latest > a > span.badge { font-size: 0.7em;float: right;padding: 0.4em;
   height: 1.4em;margin: 6px 0; }
 .sns-wrapper a > img { margin-top: 2px;vertical-align: top; }
-.article-row { background-color: #ffffbf;padding: 10px 5px;
-    background-image: url('/images/main/ic_spring.png');
+.article-row { background-color: white;padding: 10px 5px;
+    background-image: url('/images/main/ic_spring_gray.png');
     background-position-y: top;background-repeat-y: no-repeat;
     border-bottom: 1px solid #aaa; }
 .nav-item.active { border-bottom: 4px solid #264fa3; }
@@ -51,6 +53,7 @@ table.articles td, table.socials td { padding: 0; }
 .video-col video { width: 100%; }
 .card .body a > div { width: 90px;height: 30px;background-size: contain;
     background-repeat: no-repeat;background-position-y: center; }
+.footer { border-top: 1px solid #d0d0d0; }
 
 @media screen and (max-width: 600px) {
   .media-first-row { margin-top: 10px; }

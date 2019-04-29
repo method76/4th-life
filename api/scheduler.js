@@ -2,12 +2,15 @@ const schedule = require('node-schedule');
 const request = require('request');
 const cheerio = require('cheerio');
 const level = require('../configs/db.js');
+const cache = require('../configs/cache.js');
+
 
 let news = null;
 let arbi = null;
 let config = null;
 let index = 0;
 let krwPrice = 0;
+let usdtPrice = 0;
 
 Date.prototype.YYYYMMDDHHMM = function () {
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
@@ -31,9 +34,10 @@ function crawlCrypto() {
       for (let i=0; i<jsonbody.length; i++) {
         // console.log('ubt item ' + JSON.stringify(jsonbody[i]));
         const price = Math.floor(jsonbody[i].trade_price);
+        const priceUsd = price/krwPrice;
         const symbol = jsonbody[i].market.replace('KRW-', '');
         arbi.upsert(time + '-UBT-' + symbol, {
-          exchange, symbol, price, time
+          exchange, symbol, price, priceUsd, time
         }, (err2, result) => {
           if (err2) {
             console.error('Got error: %j', err2);
@@ -46,12 +50,13 @@ function crawlCrypto() {
     if (!err1) {
       const jsonbody = JSON.parse(body);
       const exchange = 'BFX';
-      for (let i=0; i<jsonbody.length; i++) {
-        const price = Math.round(jsonbody[i][1]*krwPrice);
+      for (let i = 0; i < jsonbody.length; i++) {
+        const priceUsd = jsonbody[i][1];
+        const price = Math.round(priceUsd * krwPrice);
         // console.log('bfx item ' + JSON.stringify(jsonbody[i]));
         const symbol = jsonbody[i][0].replace('t', '').replace('USD', '');
         arbi.upsert(time + '-BFX-' + symbol, {
-          exchange, symbol, price, time
+          exchange, symbol, price, priceUsd, time
         }, (err2, result) => {
           if (err2) {
             console.error('Got error: %j', err2);
@@ -60,12 +65,33 @@ function crawlCrypto() {
       }
     }
   });
-
+  request.get(config.URL_GIO, (err1, res, body) => {
+    if (!err1) {
+      const jsonbody = JSON.parse(body);
+      const exchange = 'GIO';
+      const tickerArr = ['btc_usdt', 'ltc_usdt', 'xrp_usdt', 'eth_usdt', 'eos_usdt', 'xlm_usdt'];
+      for (let i=0; i<tickerArr.length; i++) {
+        const priceUsdt = jsonbody[tickerArr[i]].last;
+        // baseVolume
+        const priceUsd = parseFloat(priceUsdt)*usdtPrice;
+        const price = Math.round(priceUsd * krwPrice);
+        // console.log('bfx item ' + JSON.stringify(jsonbody[i]));
+        const symbol = tickerArr[i].replace('_usdt', '').toUpperCase();
+        arbi.upsert(time + '-GIO-' + symbol, {
+          exchange, symbol, price, priceUsd, time
+        }, (err2, result) => {
+          if (err2) {
+            console.error('Got error: %j', err2);
+          }
+        });
+      }
+    }
+  });
   console.log('crawlCrypto finished ' + krwPrice);
 }
 
 function crawlRate() {
-  const options = {
+  let options = {
     url: config.URL_DAU,
     headers: {
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:24.0) Gecko/20100101 Firefox/24.0',
@@ -86,6 +112,34 @@ function crawlRate() {
           level.get('krwPrice', function (err3, value) {
             if (err3) return console.error('Got error: %j', err3);
             krwPrice = value;
+          });
+        });
+      } catch (e) {
+        console.log('e ' + e.message);
+      }
+    }
+  });
+  options = {
+    url: config.URL_USDT,
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:24.0) Gecko/20100101 Firefox/24.0',
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  };
+  request.get(options, (err1, res, body) => {
+    if (!err1) {
+      // https://finance.daum.net/exchanges
+      // console.log('crawlRate ' + body);
+      const $ = cheerio.load(body);
+      // 1,137.1 원
+      try {
+        let usdtPriceStr = $("#quote_price .details-panel-item--price__value").text().replace('$', '')
+          .trim();
+        level.put('usdtPrice', parseFloat(usdtPriceStr), function (err2) {
+          if (err2) return console.error('Got error: %j', err2);
+          level.get('usdtPrice', function (err3, value) {
+            if (err3) return console.error('Got error: %j', err3);
+            usdtPrice = value;
           });
         });
       } catch (e) {
@@ -154,7 +208,7 @@ function crawlTkp() {
             // https://tokenpost.kr + href
             const uid = `tkp-${link.replace('/', '')}`;
             const cate = 'tkp';
-            const title = $(elem).find('.articleListTitle').text();
+            const title = $(elem).find('.articleListTitle a').text();
             // 2019-02-15 11:54
             const date = $(elem).find('.articleListDate').text().trim()
               .replace('-', '')
@@ -355,11 +409,13 @@ function crawlDst() {
         }
         if (date === '') { date = new Date().YYYYMMDDHHMM(); }
         const content = '';
-        news.upsert(uid, {
+        news.insert(uid, {
           id: uid, link, cate, title, content, date, img: imgSrc,
         }, (err2, result) => {
           if (err2) {
-            console.error('Got error: %j', err2);
+            if (!err2.message.startsWith('The key')) {
+              console.error('Got error: %j', err2);
+            }
           }
         });
       });

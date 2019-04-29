@@ -7,14 +7,13 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
-      { hid: 'description', name: 'description', content: 'The gateway to information of the 4th industry' }
+      { hid: 'description', name: 'description', content: 'The gateway to the information of the 4th industry' }
     ],
     script: [
-      { src: '//www.googletagmanager.com/gtag/js?id=UA-46283958-4', async: true },
-      { src: '//t1.daumcdn.net/adfit/static/ad.min.js', async: true },
+      { src: '//www.googletagmanager.com/gtag/js?id=UA-139212564-1', async: true },
+      { innerHTML: "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-139212564-1');"
+        , type: "text/javascript", charset: "utf-8" },
       { src: '//widgets.coingecko.com/coingecko-coin-price-marquee-widget.js', body: true },
-      { src: '//widgets.coingecko.com/coingecko-coin-list-widget.js', body: true },
-
       { src: '/bundles/libscripts.bundle.js', body: true },
       { src: '/bundles/vendorscripts.bundle.js', body: true },
       { src: '/bundles/jvectormap.bundle.js', body: true },
@@ -24,14 +23,14 @@ module.exports = {
       { src: '/js/index.js', body: true }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'images/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700%7CRoboto:300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,latin-ext' }
+      { rel: 'icon', type: 'image/x-icon', href: '~/assets/favicon.ico' }
     ]
   },
   /*
   ** Global CSS
   */
   css: [
+    '~/assets/fa/css/all.css',
     '~/assets/plugins/bootstrap/css/bootstrap.min.css',
     '~/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css',
     '~/assets/plugins/charts-c3/plugin.css',
@@ -43,7 +42,6 @@ module.exports = {
   ** Add axios globally
   */
   build: {
-    vendor: ['axios'],
     /*
     ** Run ESLINT on save
     */
@@ -61,6 +59,8 @@ module.exports = {
   serverMiddleware: [
     // API middleware
     '~/api/app.js'
+  ],
+  plugins: [
   ],
   modules: [
     ['@nuxtjs/google-adsense']

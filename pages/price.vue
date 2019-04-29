@@ -4,7 +4,7 @@
     <div class="block-header">
       <div class="row">
         <div class="col-12">
-          <h2>가격비교</h2>&nbsp;
+          <h2>가격비교 {{ TIME_KR }}</h2>
         </div>
       </div>
     </div>
@@ -16,41 +16,54 @@
             <table class="w-100 table table-striped table-bordered table-hover">
                 <thead class="thead-dark">
                 <tr>
-                    <th>$1 = {{ USD_KRW }}원</th>
+                    <th>{{ USD_KRW }}/$</th>
                     <th><img src="/images/crypto/ic_ubt.svg" height="20"></th>
+                    <th><img src="/images/crypto/ic_gio.svg" height="25"></th>
                     <th><img src="/images/crypto/ic_bfx.svg" height="25"></th>
-                    <th>김치프리미엄</th>
+                    <th><img src="/images/crypto/ic_kimchi.png" height="30"></th>
                 </tr>
                 </thead>
                 <tbody id="prices">
                 <tr>
                     <td class="table-success">BTC</td>
-                    <td>{{ UBT_BTC }}</td>
-                    <td>{{ BFX_BTC }}</td>
+                    <td class="price">{{ UBT_BTC }}<br>${{ UBT_BTC_USD }}</td>
+                    <td class="price">{{ GIO_BTC }}<br>${{ GIO_BTC_USD }}</td>
+                    <td class="price">{{ BFX_BTC }}<br>${{ BFX_BTC_USD }}</td>
                     <td class="table-primary">{{ GAP_BTC }}</td>
                 </tr>
                 <tr>
                     <td class="table-success">ETH</td>
-                    <td>{{ UBT_ETH }}</td>
-                    <td>{{ BFX_ETH }}</td>
+                    <td class="price">{{ UBT_ETH }}<br>${{ UBT_ETH_USD }}</td>
+                    <td class="price">{{ GIO_ETH }}<br>${{ GIO_ETH_USD }}</td>
+                    <td class="price">{{ BFX_ETH }}<br>${{ BFX_ETH_USD }}</td>
                     <td class="table-primary">{{ GAP_ETH }}</td>
                 </tr>
                 <tr>
                     <td class="table-success">XRP</td>
-                    <td>{{ UBT_XRP }}</td>
-                    <td>{{ BFX_XRP }}</td>
+                    <td class="price">{{ UBT_XRP }}<br>${{ UBT_XRP_USD }}</td>
+                    <td class="price">{{ GIO_XRP }}<br>${{ GIO_XRP_USD }}</td>
+                    <td class="price">{{ BFX_XRP }}<br>${{ BFX_XRP_USD }}</td>
+                    <td class="table-primary">{{ GAP_XRP }}</td>
+                </tr>
+                <tr>
+                    <td class="table-success">XLM</td>
+                    <td class="price">{{ UBT_XLM }}<br>${{ UBT_XLM_USD }}</td>
+                    <td class="price">{{ GIO_XLM }}<br>${{ GIO_XLM_USD }}</td>
+                    <td class="price">{{ BFX_XLM }}<br>${{ BFX_XLM_USD }}</td>
                     <td class="table-primary">{{ GAP_XRP }}</td>
                 </tr>
                 <tr>
                     <td class="table-success">EOS</td>
-                    <td>{{ UBT_EOS }}</td>
-                    <td>{{ BFX_EOS }}</td>
+                    <td class="price">{{ UBT_EOS }}<br>${{ UBT_EOS_USD }}</td>
+                    <td class="price">{{ GIO_EOS }}<br>${{ GIO_EOS_USD }}</td>
+                    <td class="price">{{ BFX_EOS }}<br>${{ BFX_EOS_USD }}</td>
                     <td class="table-primary">{{ GAP_EOS }}</td>
                 </tr>
                 <tr>
                     <td class="table-success">LTC</td>
-                    <td>{{ UBT_LTC }}</td>
-                    <td>{{ BFX_LTC }}</td>
+                    <td class="price">{{ UBT_LTC }}<br>${{ UBT_LTC_USD }}</td>
+                    <td class="price">{{ GIO_LTC }}<br>${{ GIO_LTC_USD }}</td>
+                    <td class="price">{{ BFX_LTC }}<br>${{ BFX_LTC_USD }}</td>
                     <td class="table-primary">{{ GAP_LTC }}</td>
                 </tr>
                 </tbody>
@@ -62,8 +75,9 @@
 </template>
 
 <style scoped>
-th, td.table-success { text-align: center; }
 td { text-align: right; }
+th, td.table-success { text-align: center;line-height: 1.5;vertical-align: middle; }
+td.price { font-size: 15px;line-height: 1.5;padding: .3rem .5rem; }
 </style>
 
 <script>
@@ -78,19 +92,23 @@ export default {
   async asyncData({params}) {
     return axios.get('/api/arbi').then((res) => {
       // {"exchange":"UBT","symbol":"XRP","price":384,"time":"201904200632"}
+      // console.log('res ' + JSON.stringify(res.data));
       let jobj = {};
       const krwPrice = res.data['usd-krw'];
-      console.log('usd-krw ' + krwPrice);
+      console.log('timeKr ' + res.data.timeKr);
       jobj['USD_KRW'] = '' + krwPrice;
+      jobj['TIME_KR'] = res.data['timeKr'];
       for (let i = 0; i < res.data.result.length; i++) {
         let price = '' + res.data.result[i].arbi.price;
+        let priceUsd = parseFloat((res.data.result[i].arbi.priceUsd + '000').substring(0, 6));
         jobj[res.data.result[i].arbi.exchange + '_' + res.data.result[i].arbi.symbol] = price;
+        jobj[res.data.result[i].arbi.exchange + '_' + res.data.result[i].arbi.symbol + '_USD'] = priceUsd;
       }
-      jobj['GAP_BTC'] = ((jobj['UBT_BTC'] - jobj['BFX_BTC']) * 100 / jobj['BFX_BTC']).toFixed(2) + '%';
-      jobj['GAP_ETH'] = ((jobj['UBT_ETH'] - jobj['BFX_ETH']) * 100 / jobj['BFX_ETH']).toFixed(2) + '%';
-      jobj['GAP_XRP'] = ((jobj['UBT_XRP'] - jobj['BFX_XRP']) * 100 / jobj['BFX_XRP']).toFixed(2) + '%';
-      jobj['GAP_EOS'] = ((jobj['UBT_EOS'] - jobj['BFX_EOS']) * 100 / jobj['BFX_EOS']).toFixed(2) + '%';
-      jobj['GAP_LTC'] = ((jobj['UBT_LTC'] - jobj['BFX_LTC']) * 100 / jobj['BFX_LTC']).toFixed(2) + '%';
+      jobj['GAP_BTC'] = ((jobj['UBT_BTC'] - jobj['BFX_BTC']) * 100 / jobj['BFX_BTC']).toFixed(2);
+      jobj['GAP_ETH'] = ((jobj['UBT_ETH'] - jobj['BFX_ETH']) * 100 / jobj['BFX_ETH']).toFixed(2);
+      jobj['GAP_XRP'] = ((jobj['UBT_XRP'] - jobj['BFX_XRP']) * 100 / jobj['BFX_XRP']).toFixed(2);
+      jobj['GAP_EOS'] = ((jobj['UBT_EOS'] - jobj['BFX_EOS']) * 100 / jobj['BFX_EOS']).toFixed(2);
+      jobj['GAP_LTC'] = ((jobj['UBT_LTC'] - jobj['BFX_LTC']) * 100 / jobj['BFX_LTC']).toFixed(2);
       for (let i = 0; i < res.data.result.length; i++) {
         // 원화 단위로 가공
         let price = '' + res.data.result[i].arbi.price.toLocaleString();
@@ -101,22 +119,6 @@ export default {
   },
   data: function () {
     return {
-      usdKrw: '',
-      'UBT_BTC': '',
-      'UBT_ETH': '',
-      'UBT_XRP': '',
-      'UBT_EOS': '',
-      'UBT_LTC': '',
-      'BFX_BTC': '',
-      'BFX_ETH': '',
-      'BFX_XRP': '',
-      'BFX_EOS': '',
-      'BFX_LTC': '',
-      'GAP_BTC': '',
-      'GAP_ETH': '',
-      'GAP_XRP': '',
-      'GAP_EOS': '',
-      'GAP_LTC': ''
     }
   }
 }

@@ -54,7 +54,9 @@
     "https://www.blockmedia.co.kr/archives/category/tv",
     "https://www.blockmedia.co.kr/archives/category/event"
   ],
-  "URL_UBT": "https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-LTC,KRW-XRP,KRW-ETH,KRW-EOS",
-  "URL_BFX": "https://api-pub.bitfinex.com/v2/tickers?symbols=tBTCUSD,tLTCUSD,tXRPUSD,tETHUSD,tEOSUSD",
+  "URL_USDT": "https://coinmarketcap.com/currencies/tether/",
+  "URL_UBT": "https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-LTC,KRW-XRP,KRW-ETH,KRW-EOS,KRW-XLM",
+  "URL_BFX": "https://api-pub.bitfinex.com/v2/tickers?symbols=tBTCUSD,tLTCUSD,tXRPUSD,tETHUSD,tEOSUSD,tXLMUSD",
+  "URL_GIO": "https://data.gateio.co/api2/1/tickers",
   "URL_DAU": "https://search.naver.com/search.naver?sm=top_sug.pre&fbm=1&acr=2&acq=%ED%99%98%EC%9C%A8&qdt=0&ie=utf8&query=%ED%99%98%EC%9C%A8"
 }

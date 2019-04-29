@@ -1,15 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link
-      to="/"
-      class="navbar-brand"
-    >
-      <img
-        src="/images/logo.png"
-        alt="4th"
-        class="d-md-block"
-      >
-    </router-link>
+    <nuxt-link to="/" class="navbar-brand">
+      <img src="/images/layout/ic_4th_life.png" alt="4th.life logo" class="d-md-block">
+    </nuxt-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -27,27 +20,15 @@
       class="collapse navbar-collapse"
     >
       <ul class="navbar-nav mr-auto">
-          <router-link
-                  to="/"
-                  active-class="active"
-                  class="nav-item"
-                  tag="li"
-          >
-              <a class="nav-link">
-                  미디어
-              </a>
-          </router-link>
-        <router-link
-          to="/price"
-          active-class="active"
-          class="nav-item"
-          tag="li"
-        >
-          <a class="nav-link">
-            김치프리미엄
-          </a>
-        </router-link>
-        <router-link
+          <nuxt-link to="/" active-class="active" class="nav-item"
+            tag="li" exact>
+              <a class="nav-link">미디어</a>
+          </nuxt-link>
+        <nuxt-link
+          to="/price" active-class="active" class="nav-item" tag="li">
+          <a class="nav-link">김치프리미엄</a>
+        </nuxt-link>
+        <nuxt-link
           to="/souvenir"
           active-class="active"
           class="nav-item"
@@ -56,8 +37,8 @@
           <a class="nav-link">
             쇼핑몰
           </a>
-        </router-link>
-          <router-link
+        </nuxt-link>
+          <nuxt-link
                   to="/solution"
                   active-class="active"
                   class="nav-item"
@@ -66,17 +47,7 @@
               <a class="nav-link">
                   기술서비스
               </a>
-          </router-link>
-          <router-link
-                  to="/explorer"
-                  active-class="active"
-                  class="nav-item"
-                  tag="li"
-          >
-              <a class="nav-link">
-                  블록탐색
-              </a>
-          </router-link>
+          </nuxt-link>
       </ul>
       <form class="form-inline my-2 my-lg-0">
       </form>
@@ -90,6 +61,6 @@
     padding: 0 24px !important; }
 .btn-primary:not(:disabled):not(.disabled):active { margin-right: -70px; }
 .btn.mobile_menu { color: #fff;background-color: #ddd;border: 1px solid #666;color: #888; }
-#navbarSupportedContent > ul { margin: 0 auto; }
-.navbar .navbar-nav .nav-link:not(.btn) { font-size: 1.33em; }
+#navbarSupportedContent > ul { margin-top: 11px;margin-left: 200px; }
+.navbar .navbar-nav .nav-link:not(.btn) { font-size: 1em;background-color: inherit; }
 </style>

@@ -38,58 +38,71 @@
               <td v-bind:class="['media_logo', item.cate]">
                 <a
                   v-bind:href="item.link"
-                  class="img-line2-text "
+                  class="img-line2-text"
                   target="_blank"
                 >
-                  <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}</a>
+                  <div class="thumb_article"
+                       v-bind:style="'background-image:url(' + item.img + ');'">
+                  </div>{{ item.title }}</a>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <!-- 2열: big image articles? -->
+      <!-- news 2열 -->
       <div class="col-lg-3 col-12 p-2">
           <table class="table table-hover m-b-0 articles">
               <tbody v-if="news2.length">
               <tr v-for="item in news2" :key="item.id">
                   <td v-bind:class="['media_logo', item.cate]">
                       <a v-bind:href="item.link"
-                              class="img-line2-text "
+                              class="img-line2-text"
                               target="_blank"
                       >
-                          <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}</a>
+                      <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>
+                      <span>{{ item.title }}</span></a>
                   </td>
               </tr>
               </tbody>
           </table>
-      </div>
-    <div class="col-lg-3 col-12 p-2">
-        <table class="table table-hover m-b-0 articles">
+        </div>
+        <!-- news 3열 -->
+        <div class="col-lg-3 col-12 p-2">
+            <table class="table table-hover m-b-0 articles">
             <tbody v-if="news3.length">
             <tr v-for="item in news3" :key="item.id">
                 <td v-bind:class="['media_logo', item.cate]">
                     <a
                         v-bind:href="item.link"
-                        class="img-line2-text "
+                        class="img-line2-text"
                         target="_blank"
                     >
-                        <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}</a>
+                    <div class="thumb_article"
+                         v-bind:style="'background-image:url(' + item.img + ');'">
+                    </div>
+                    <span>{{ item.title }}</span>
+                    </a>
                 </td>
             </tr>
             </tbody>
-        </table>
-    </div>
-      <div class="col-lg-3 col-12 p-2">
+            </table>
+        </div>
+        <!-- news 4열 -->
+        <div class="col-lg-3 col-12 p-2">
           <table class="table table-hover m-b-0 articles">
               <tbody v-if="news4.length">
               <tr v-for="item in news4" :key="item.id">
                   <td v-bind:class="['media_logo', item.cate]">
                     <a
                       v-bind:href="item.link"
-                      class="img-line2-text "
+                      class="img-line2-text"
                       target="_blank"
                       >
-                    <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>{{ item.title }}
+                    <div class="thumb_article"
+                         v-bind:style="'background-image:url(' + item.img + ');'">
+                    </div>
+                    <span>{{ item.title }}</span>
+                    </a>
                   </td>
               </tr>
               </tbody>
@@ -321,12 +334,12 @@
   </div>
 </template>
 
-<style>
-.table td, .table th { border-bottom: 1px dashed #436dc4;border-top: 0; }
+<style scoped>
+.table td, .table th { border-bottom: 1px solid #aaa;border-top: 0; }
 .ad-col { overflow: hidden;height: 60px;padding: 0;}
 .media_logo { background-size: 80px; background-repeat: no-repeat;
     background-position: 100% 96%; }
-.media_logo a { color: rgba(0,0,0,0.7); }
+.media_logo a { color: rgba(0,0,0,0.7);width: 100%; }
 .tkp { background-image: url('/images/media_logo/ic_tkp.svg'); }
 .dst { background-image: url('/images/media_logo/ic_dst.png'); }
 .bip { background-image: url('/images/media_logo/ic_bip.png'); }
