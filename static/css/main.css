@@ -12,12 +12,14 @@ h5 { border-bottom: 4px solid #264fa3; }
 .sidebar .menu .list { margin: 0px; }
 ul.list li { padding-left: 10px; }
 section.content { margin: 0;line-height: 1; }
-.dark { background-color: #444; }
+.dark { background-color: black; }
 .media-wrapper-parent { padding-right: 10px;padding-left: 10px; }
-.media-wrapper.second .col { margin-bottom: 6px;padding: 0; }
-.media-wrapper.second a > div { width: 92px;height:30px;border: 1px solid #aaa;
-    background-size: contain;padding: 1px;background-repeat: no-repeat;background-position: center;
-    filter: grayscale(1);-webkit-filter: grayscale(1); }
+.media-wrapper.second .col { margin-bottom: 6px;margin-right: 3px;padding: 0 4px;
+    border-radius: 6px;border: 1px solid #aaa;filter: grayscale(1);
+    -webkit-filter: grayscale(1); }
+.media-wrapper.second .col:hover { opacity: .75;filter: none;-webkit-filter:none; }
+.media-wrapper.second a > div { width: 92px;height:30px;background-size: contain;
+    padding: 1px;background-repeat: no-repeat;background-position: center; }
 .navbar-brand span { font-size: 25px;font-weight: bold; }
 .navbar-brand .zmdi, .footer .zmdi { font-size: 32px;margin: 6px 0; }
 .ellipsis { white-space: nowrap;overflow: hidden;word-break: break-all;text-overflow: ellipsis; }

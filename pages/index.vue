@@ -191,10 +191,9 @@
                 <div style="background-image: url('/images/media_logo/ic_blockdaily.png');" />
             </a>
         </div>
-        <div class="col">
+        <div class="col dark">
             <a href="https://chainnews.kr">
-                <div class="dark"
-                     style="background-image: url('/images/media_logo/ic_chainnews.png');"/>
+                <div style="background-image: url('/images/media_logo/ic_chainnews.png');"/>
             </a>
         </div>
         <div class="col">
@@ -209,7 +208,7 @@
         </div>
       <!-- 허브들 Starts -->
 
-      <div class="col">
+      <div class="col dark">
         <a href="https://cointelegraph.com">
           <div style="background-image: url('/images/media_logo/ic_cointelegraph.png');" />
         </a>
@@ -221,11 +220,9 @@
         </a>
       </div>
 
-      <div class="col">
+      <div class="col dark">
         <a href="http://cryptograph.co.kr">
-            <div class="dark"
-                 style="background-image: url('/images/media_logo/ic_cryptograph.png');"
-            />
+            <div style="background-image: url('/images/media_logo/ic_cryptograph.png');" />
         </a>
       </div>
 
@@ -234,9 +231,9 @@
             <div style="background-image: url('/images/media_logo/ic_bloter.png');" />
         </a>
       </div>
-      <div class="col">
+      <div class="col dark">
         <a href="http://www.zdnet.co.kr/newskey/?lstcode=%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8">
-            <div class="dark" style="background-image: url('/images/media_logo/ic_zdnet.png');" />
+            <div style="background-image: url('/images/media_logo/ic_zdnet.png');" />
         </a>
       </div>
       <div class="col">
@@ -255,10 +252,9 @@
         </a>
       </div>
 
-      <div class="col">
+      <div class="col dark">
         <a href="https://kr.investing.com/news/cryptocurrency-news">
-            <div class="dark"
-                 style="background-image: url('/images/media_logo/ic_investingcom.png');" />
+            <div style="background-image: url('/images/media_logo/ic_investingcom.png');" />
         </a>
       </div>
 
@@ -273,10 +269,9 @@
         </a>
       </div>
 
-      <div class="col">
+      <div class="col dark">
         <a href="https://kr.coinness.com">
-            <div class="dark"
-                 style="background-image: url('/images/media_logo/ic_coinness.png');"></div>
+            <div style="background-image: url('/images/media_logo/ic_coinness.png');"></div>
         </a>
       </div>
       <div class="col">

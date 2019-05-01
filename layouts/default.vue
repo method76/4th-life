@@ -51,7 +51,7 @@ section.content { padding-bottom: 115px; }
 .table td, .table th {
     font-size: 17px;overflow: hidden;height: 46px;padding: 0.5rem;vertical-align: top; }
 .img-line2-text {
-  text-overflow: ellipsis;height: 58px;overflow: hidden;
+  text-overflow: ellipsis;height: 59px;overflow: hidden;
   display: inline-flex;line-height: 19px;font-weight: 600;padding: 2px;
   background-color: rgba(255,255,255,0.4); }
 </style>

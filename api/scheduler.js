@@ -4,7 +4,6 @@ const cheerio = require('cheerio');
 const level = require('../configs/db.js');
 const cache = require('../configs/cache.js');
 
-
 let news = null;
 let arbi = null;
 let config = null;
@@ -44,6 +43,8 @@ function crawlCrypto() {
           }
         });
       }
+    } else {
+      console.error('UBT Got error: %j', err1);
     }
   });
   request.get(config.URL_BFX, (err1, res, body) => {
@@ -63,6 +64,8 @@ function crawlCrypto() {
           }
         });
       }
+    } else {
+      console.error('BFX Got error: %j', err1);
     }
   });
   request.get(config.URL_GIO, (err1, res, body) => {
@@ -85,9 +88,10 @@ function crawlCrypto() {
           }
         });
       }
+    } else {
+      console.error('GIO Got error: %j', err1);
     }
   });
-  console.log('crawlCrypto finished ' + krwPrice);
 }
 
 function crawlRate() {
@@ -117,6 +121,8 @@ function crawlRate() {
       } catch (e) {
         console.log('e ' + e.message);
       }
+    } else {
+      console.error('Naver Got error: %j', err1);
     }
   });
   options = {
@@ -128,8 +134,6 @@ function crawlRate() {
   };
   request.get(options, (err1, res, body) => {
     if (!err1) {
-      // https://finance.daum.net/exchanges
-      // console.log('crawlRate ' + body);
       const $ = cheerio.load(body);
       // 1,137.1 원
       try {
@@ -145,6 +149,8 @@ function crawlRate() {
       } catch (e) {
         console.log('e ' + e.message);
       }
+    } else {
+      console.error('CmCap Got error: %j', err1);
     }
   });
 }

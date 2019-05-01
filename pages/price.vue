@@ -11,6 +11,7 @@
     <div class="container-fluid product-grid">
       <div class="row clearfix">
         <div class="col-lg-6 col-sm-12">
+            <C3AreaChart></C3AreaChart>
         </div>
         <div class="col-lg-6 col-sm-12">
             <table class="w-100 table table-striped table-bordered table-hover">
@@ -82,9 +83,11 @@ td.price { font-size: 15px;line-height: 1.5;padding: .3rem .5rem; }
 
 <script>
 import axios from '../plugins/axios'
+import C3AreaChart from '../layouts/components/C3AreaChart'
 
 export default {
   components: {
+    C3AreaChart
   },
   mounted () {
     // to init the graph call:

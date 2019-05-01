@@ -10,12 +10,9 @@
     </div>
     <div class="container-fluid product-grid">
       <div class="row clearfix">
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+        <div class="col-xl-3 col-lg-4 col-sm-6">
           <div class="card">
             <div class="body product_item">
-              <span class="label onsale">
-                Sale!
-              </span>
               <img
                 src="/images/crypto/ic_laptop_sticker_1.png"
                 alt="Product"
@@ -27,7 +24,7 @@
                 </a>
                 <ul class="product_price list-unstyled">
                   <li class="old_price">
-                    9,800원
+                    7,700원
                   </li>
                   <li class="new_price">
                     5,900원
@@ -51,12 +48,9 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+        <div class="col-xl-3 col-lg-4 col-sm-6">
           <div class="card">
             <div class="body product_item">
-              <span class="label onsale">
-                Sale!
-              </span>
               <img
                 src="/images/crypto/a-title.jpg"
                 alt="Product"
@@ -68,7 +62,7 @@
                 </a>
                 <ul class="product_price list-unstyled">
                   <li class="old_price">
-                    3,800원
+                    6,800원
                   </li>
                   <li class="new_price">
                     2,900원
@@ -92,7 +86,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+        <div class="col-xl-3 col-lg-4 col-sm-6">
           <div class="card">
             <div class="body product_item">
               <img
@@ -106,7 +100,7 @@
                 </a>
                 <ul class="product_price list-unstyled">
                   <li class="old_price">
-                    3,800원
+                    6,800원
                   </li>
                   <li class="new_price">
                     2,900원
@@ -130,7 +124,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+        <div class="col-xl-3 col-lg-4 col-sm-6">
           <div class="card">
             <div class="body product_item">
               <img
@@ -144,7 +138,7 @@
                 </a>
                 <ul class="product_price list-unstyled">
                   <li class="old_price">
-                    3,800원
+                    6,800원
                   </li>
                   <li class="new_price">
                     2,900원
@@ -172,8 +166,11 @@
     </div>
   </div>
 </template>
-section.content
-<style scope>
+
+<style scoped>
+.btn { font-weight: 600;font-size: 1.2em; }
+.btn-success {
+  color: #333;text-shadow: none;background-color: #fff;border: .05rem solid #888; }
 .naver-buy-button {
   display: inline-block;
   overflow: hidden;
@@ -184,6 +181,7 @@ section.content
 /*.product-grid .img-fluid {
   min-height: 327px; }*/
 </style>
+
 <script>
 export default {
   components: {

@@ -28,8 +28,8 @@ TrustLogo("/certs/positivessl_trust_seal_md_167x42.png", "CL1", "none");
 <style>
 .ssl-cert { background-image: url(/images/layout/ssl_gray.png);
   height: 33px;width: 130px;background-size: contain;background-repeat: no-repeat;
-  float: right;margin-left: 10px; }
-.corp-img { height: 50px; }
+  float: right;margin-left: 10px;opacity: .7; }
+.corp-img { height: 50px;opacity: .5; }
 .footer-copy > div { margin-top: 4px;font-size: 14px;color: #888; }
 .footer-right { height: 33px; }
 .container-fluid.footer .col-12 { padding: 0; }

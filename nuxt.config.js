@@ -7,7 +7,19 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
-      { hid: 'description', name: 'description', content: 'The gateway to the information of the 4th industry' }
+      { hid: 'description', name: 'description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
+      { property: 'og:title', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
+      { property: 'og:site_name', content: 'The 4th Life' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://4th.life' },
+      { property: 'og:image', content: 'https://4th.life/4th_rep.png' },
+      { property: 'og:description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
+      { name: 'twitter:card', content: 'The 4th Life' },
+      { name: 'twitter:site', content: 'https://4th.life' },
+      { name: 'twitter:title', content: '따끈따끈한 블록체인 산업 뉴스 포탈 - 포스라이프' },
+      { name: 'twitter:description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
+      { name: 'twitter:creator', content: '@KittychainI' },
+      { name: 'twitter:image:src', content: 'https://4th.life/4th_rep.png' }
     ],
     script: [
       { src: '//www.googletagmanager.com/gtag/js?id=UA-139212564-1', async: true },
@@ -23,7 +35,8 @@ module.exports = {
       { src: '/js/index.js', body: true }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '~/assets/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'canonical', href: 'https://4th.life' }
     ]
   },
   /*
@@ -38,9 +51,6 @@ module.exports = {
     '~/assets/css/style.min.css',
     '~/static/css/main.css'
   ],
-  /*
-  ** Add axios globally
-  */
   build: {
     /*
     ** Run ESLINT on save
