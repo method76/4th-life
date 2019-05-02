@@ -3,23 +3,23 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'The 4th Life',
+    title: 'The 4th Life - 포스라이프',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
       { hid: 'description', name: 'description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
-      { property: 'og:title', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
-      { property: 'og:site_name', content: 'The 4th Life' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: 'https://4th.life' },
-      { property: 'og:image', content: 'https://4th.life/4th_rep.png' },
-      { property: 'og:description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
-      { name: 'twitter:card', content: 'The 4th Life' },
-      { name: 'twitter:site', content: 'https://4th.life' },
-      { name: 'twitter:title', content: '따끈따끈한 블록체인 산업 뉴스 포탈 - 포스라이프' },
-      { name: 'twitter:description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
-      { name: 'twitter:creator', content: '@KittychainI' },
-      { name: 'twitter:image:src', content: 'https://4th.life/4th_rep.png' }
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'The 4th Life' },
+      { hid: 'og:url', property: 'og:url', content: 'https://4th.life' },
+      { hid: 'twitter:card', name: 'twitter:card', content: 'The 4th Life' },
+      { hid: 'twitter:site', name: 'twitter:site', content: 'https://4th.life' },
+      { hid: 'twitter:creator', name: 'twitter:creator', content: '@kittychain_inc' },
+      { hid: 'og:title', property: 'og:title', content: 'The 4th Life - 포스라이프' },
+      { hid: 'og:image', property: 'og:image', content: 'https://4th.life/4th_rep.png' },
+      { hid: 'og:description', property: 'og:description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
+      { hid: 'twitter:title', name: 'twitter:title', content: 'The 4th Life - 포스라이프' },
+      { hid: 'twitter:description', name: 'twitter:description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
+      { hid: 'twitter:image:src', name: 'twitter:image:src', content: 'https://4th.life/4th_rep.png' }
     ],
     script: [
       { src: '//www.googletagmanager.com/gtag/js?id=UA-139212564-1', async: true },
@@ -52,9 +52,6 @@ module.exports = {
     '~/static/css/main.css'
   ],
   build: {
-    /*
-    ** Run ESLINT on save
-    */
     extend (config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
