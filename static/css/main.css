@@ -4,7 +4,6 @@ html, body {
   -webkit-font-smoothing: antialiased;color: #444; }
 a { color: #444; }
 a:hover, a:focus { color: inherit; }
-h5 { border-bottom: 4px solid #264fa3; }
 .contents-wrapper { padding-top: 57px; }
 .navbar-brand { margin: 0; padding: 0; }
 .navbar-brand img { height: 40px; }

@@ -5,12 +5,6 @@
     <!-- Main Content -->
     <TopNav />
     <div class="contents-wrapper">
-        <coingecko-coin-price-marquee-widget
-        coin-ids="bitcoin,ethereum,eos,ripple,litecoin"
-        currency="krw"
-        background-color="#ffffff"
-        locale="ko"
-        />
       <section class="content">
         <nuxt />
       </section>
@@ -34,8 +28,8 @@ export default {
 <style>
 html { height: 100%; }
 body { min-height: 100%;position: relative; }
-.layout_wrapper { }
-section.content { padding-bottom: 115px; }
+.layout_wrapper { padding-bottom: 91px; }
+section.content { }
 .footer { position: absolute; right: 0;
     bottom: 0; left: 0; }
 .contents-wrapper { min-height: 100%; }

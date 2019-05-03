@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <nuxt-link to="/" class="navbar-brand">
-      <img src="/images/layout/ic_4th_life.png" alt="4th.life logo" class="d-md-block">
+      <img src="/images/layout/ic_4th_life.png" alt="4th Life Logo" class="d-md-block">
     </nuxt-link>
     <button
       class="navbar-toggler"
@@ -10,8 +10,7 @@
       data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent"
       aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" />
     </button>
 
@@ -39,18 +38,15 @@
           </a>
         </nuxt-link>
           <nuxt-link
-                  to="/solution"
-                  active-class="active"
-                  class="nav-item"
-                  tag="li"
-          >
+            to="/solution"
+            active-class="active"
+            class="nav-item"
+            tag="li">
               <a class="nav-link">
                   기술서비스
               </a>
           </nuxt-link>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-      </form>
     </div>
   </nav>
 </template>

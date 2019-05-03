@@ -1,6 +1,11 @@
 <template>
   <!-- Main Content -->
   <div class="container-fluid">
+    <coingecko-coin-price-marquee-widget
+      coin-ids="bitcoin,ethereum,eos,ripple,litecoin"
+      currency="krw"
+      background-color="#ffffff"
+      locale="ko" />
     <!-- 동영상 -->
     <div class="row video-row">
       <div class="col-12 video-col">
@@ -36,14 +41,13 @@
           <tbody v-if="news1.length">
             <tr v-for="item in news1" :key="item.id">
               <td v-bind:class="['media_logo', item.cate]">
-                <a
-                  v-bind:href="item.link"
-                  class="img-line2-text"
-                  target="_blank"
-                >
+                <a v-bind:href="item.link" class="img-line2-text"
+                  target="_blank">
                   <div class="thumb_article"
                        v-bind:style="'background-image:url(' + item.img + ');'">
-                  </div>{{ item.title }}</a>
+                  </div>
+                  <span>{{ item.title }}</span>
+                </a>
               </td>
             </tr>
           </tbody>
@@ -51,62 +55,56 @@
       </div>
       <!-- news 2열 -->
       <div class="col-lg-3 col-12 p-2">
-          <table class="table table-hover m-b-0 articles">
-              <tbody v-if="news2.length">
-              <tr v-for="item in news2" :key="item.id">
-                  <td v-bind:class="['media_logo', item.cate]">
-                      <a v-bind:href="item.link"
-                              class="img-line2-text"
-                              target="_blank"
-                      >
-                      <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'"></div>
-                      <span>{{ item.title }}</span></a>
-                  </td>
-              </tr>
-              </tbody>
-          </table>
-        </div>
-        <!-- news 3열 -->
-        <div class="col-lg-3 col-12 p-2">
-            <table class="table table-hover m-b-0 articles">
-            <tbody v-if="news3.length">
-            <tr v-for="item in news3" :key="item.id">
-                <td v-bind:class="['media_logo', item.cate]">
-                    <a
-                        v-bind:href="item.link"
-                        class="img-line2-text"
-                        target="_blank"
-                    >
-                    <div class="thumb_article"
-                         v-bind:style="'background-image:url(' + item.img + ');'">
-                    </div>
-                    <span>{{ item.title }}</span>
-                    </a>
-                </td>
-            </tr>
-            </tbody>
-            </table>
-        </div>
-        <!-- news 4열 -->
-        <div class="col-lg-3 col-12 p-2">
-          <table class="table table-hover m-b-0 articles">
-              <tbody v-if="news4.length">
-              <tr v-for="item in news4" :key="item.id">
-                  <td v-bind:class="['media_logo', item.cate]">
-                    <a
-                      v-bind:href="item.link"
-                      class="img-line2-text"
-                      target="_blank"
-                      >
-                    <div class="thumb_article"
-                         v-bind:style="'background-image:url(' + item.img + ');'">
-                    </div>
-                    <span>{{ item.title }}</span>
-                    </a>
-                  </td>
-              </tr>
-              </tbody>
-          </table>
+        <table class="table table-hover m-b-0 articles">
+          <tbody v-if="news2.length">
+          <tr v-for="item in news2" :key="item.id">
+            <td v-bind:class="['media_logo', item.cate]">
+              <a v-bind:href="item.link"
+                class="img-line2-text" target="_blank">
+                <div class="thumb_article" v-bind:style="'background-image:url(' + item.img + ');'">
+                </div>
+                <span>{{ item.title }}</span>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- news 3열 -->
+      <div class="col-lg-3 col-12 p-2">
+        <table class="table table-hover m-b-0 articles">
+          <tbody v-if="news3.length">
+          <tr v-for="item in news3" :key="item.id">
+            <td v-bind:class="['media_logo', item.cate]">
+              <a v-bind:href="item.link" class="img-line2-text" target="_blank">
+                <div class="thumb_article"
+                     v-bind:style="'background-image:url(' + item.img + ');'">
+                </div>
+                <span>{{ item.title }}</span>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- news 4열 -->
+      <div class="col-lg-3 col-12 p-2">
+        <table class="table table-hover m-b-0 articles">
+          <tbody v-if="news4.length">
+          <tr v-for="item in news4" :key="item.id">
+            <td v-bind:class="['media_logo', item.cate]">
+              <a v-bind:href="item.link"
+                class="img-line2-text"
+                target="_blank">
+                <div class="thumb_article"
+                     v-bind:style="'background-image:url(' + item.img + ');'">
+                </div>
+                <span>{{ item.title }}</span>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <!-- Row end -->
@@ -132,7 +130,7 @@
       </div>
       <div class="col">
         <a href="https://dstreet.io">
-            <div style="background-image: url('/images/media_logo/ic_dst.png');" />
+          <div style="background-image: url('/images/media_logo/ic_dst.png');" />
         </a>
       </div>
       <div class="col">
@@ -142,10 +140,9 @@
       </div>
       <div class="col">
         <a href="https://www.blockmedia.co.kr">
-            <div style="background-image: url('/images/media_logo/ic_blm.png');" />
+          <div style="background-image: url('/images/media_logo/ic_blm.png');" />
         </a>
       </div>
-
       <div class="col">
         <a href="https://blockpost.com">
           <div style="background-image: url('/images/media_logo/ic_blp.png');" />
@@ -153,19 +150,19 @@
       </div>
       <div class="col">
         <a href="https://www.decenter.kr">
-            <div style="background-image: url('/images/media_logo/ic_dct.png');" />
+          <div style="background-image: url('/images/media_logo/ic_dct.png');" />
         </a>
       </div>
-        <div class="col">
-            <a href="http://www.coinreaders.com">
-                <div style="background-image: url('/images/media_logo/ic_cnr.png');" />
-            </a>
-        </div>
-        <div class="col">
-            <a href="http://cointoday.co.kr">
-                <div style="background-image: url('/images/media_logo/ic_ctd.png');" />
-            </a>
-        </div>
+      <div class="col">
+        <a href="http://www.coinreaders.com">
+          <div style="background-image: url('/images/media_logo/ic_cnr.png');" />
+        </a>
+      </div>
+      <div class="col">
+        <a href="http://cointoday.co.kr">
+          <div style="background-image: url('/images/media_logo/ic_ctd.png');" />
+        </a>
+      </div>
       <div class="col">
         <a href="https://www.coindeskkorea.com" class="ellipse">
           <div style="background-image: url('/images/media_logo/ic_coindeskkorea.png');" />
@@ -176,125 +173,117 @@
           <div style="background-image: url('/images/media_logo/ic_paxnetnews.png');" />
         </a>
       </div>
-        <div class="col">
-            <a href="https://trendw.kr/category/blockchain">
-                <div style="background-image: url('/images/media_logo/ic_trendwatching.jpg');" />
-            </a>
-        </div>
+      <div class="col">
+        <a href="https://trendw.kr/category/blockchain">
+          <div style="background-image: url('/images/media_logo/ic_trendwatching.jpg');" />
+        </a>
+      </div>
       <div class="col">
         <a href="http://blocktimestv.com">
           <div style="background-image: url('/images/media_logo/ic_blocktimestvdotcom.png');" />
         </a>
       </div>
-        <div class="col">
-            <a href="https://blockdaily.com">
-                <div style="background-image: url('/images/media_logo/ic_blockdaily.png');" />
-            </a>
-        </div>
-        <div class="col dark">
-            <a href="https://chainnews.kr">
-                <div style="background-image: url('/images/media_logo/ic_chainnews.png');"/>
-            </a>
-        </div>
-        <div class="col">
-            <a href="http://www.thebchain.co.kr">
-                <div style="background-image: url('/images/media_logo/ic_tbc.png');" />
-            </a>
-        </div>
-        <div class="col">
-            <a href="http://www.4th.kr/news/articleList.html?sc_section_code=S1N10&view_type=sm">
-                <div style="background-image: url('/images/media_logo/ic_4th.png');" />
-            </a>
-        </div>
+      <div class="col">
+        <a href="https://blockdaily.com">
+          <div style="background-image: url('/images/media_logo/ic_blockdaily.png');" />
+        </a>
+      </div>
+      <div class="col dark">
+        <a href="https://chainnews.kr">
+          <div style="background-image: url('/images/media_logo/ic_chainnews.png');"/>
+        </a>
+      </div>
+      <div class="col">
+        <a href="http://www.thebchain.co.kr">
+          <div style="background-image: url('/images/media_logo/ic_tbc.png');" />
+        </a>
+      </div>
+      <div class="col">
+        <a href="http://www.4th.kr/news/articleList.html?sc_section_code=S1N10&view_type=sm">
+          <div style="background-image: url('/images/media_logo/ic_4th.png');" />
+        </a>
+      </div>
       <!-- 허브들 Starts -->
-
       <div class="col dark">
         <a href="https://cointelegraph.com">
           <div style="background-image: url('/images/media_logo/ic_cointelegraph.png');" />
         </a>
       </div>
-
       <div class="col">
         <a href="https://cryptobriefing.com">
             <div style="background-image: url('/images/media_logo/ic_cryptobriefing.png');" />
         </a>
       </div>
-
       <div class="col dark">
         <a href="http://cryptograph.co.kr">
-            <div style="background-image: url('/images/media_logo/ic_cryptograph.png');" />
+          <div style="background-image: url('/images/media_logo/ic_cryptograph.png');" />
         </a>
       </div>
-
       <div class="col">
         <a href="https://www.bloter.net/archives/tag/%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8">
-            <div style="background-image: url('/images/media_logo/ic_bloter.png');" />
+          <div style="background-image: url('/images/media_logo/ic_bloter.png');" />
         </a>
       </div>
       <div class="col dark">
         <a href="http://www.zdnet.co.kr/newskey/?lstcode=%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8">
-            <div style="background-image: url('/images/media_logo/ic_zdnet.png');" />
+          <div style="background-image: url('/images/media_logo/ic_zdnet.png');" />
         </a>
       </div>
       <div class="col">
         <a href="http://www.etnews.com/news/series_list.html?id=2620">
-            <div style="background-image: url('/images/media_logo/ic_etnews.png');" />
+          <div style="background-image: url('/images/media_logo/ic_etnews.png');" />
         </a>
       </div>
       <div class="col">
         <a href="http://www.dt.co.kr">
-            <div style="background-image: url('/images/media_logo/ic_dt.jpg');" />
+          <div style="background-image: url('/images/media_logo/ic_dt.jpg');" />
         </a>
       </div>
       <div class="col">
         <a href="http://www.fnnews.com/section/002010000">
-            <div style="background-image: url('/images/media_logo/ic_financialnews.png');" />
+          <div style="background-image: url('/images/media_logo/ic_financialnews.png');" />
         </a>
       </div>
-
       <div class="col dark">
         <a href="https://kr.investing.com/news/cryptocurrency-news">
-            <div style="background-image: url('/images/media_logo/ic_investingcom.png');" />
+          <div style="background-image: url('/images/media_logo/ic_investingcom.png');" />
         </a>
       </div>
-
       <div class="col">
         <a href="https://www.blockchainhub.kr">
-            <div style="background-image: url('/images/media_logo/ic_blockchainhub.svg');" />
+          <div style="background-image: url('/images/media_logo/ic_blockchainhub.svg');" />
         </a>
       </div>
       <div class="col">
         <a href="https://www.dailycoinews.com">
-            <div style="background-image: url('/images/media_logo/ic_dailycoinnews.png');" />
+          <div style="background-image: url('/images/media_logo/ic_dailycoinnews.png');" />
         </a>
       </div>
-
       <div class="col dark">
         <a href="https://kr.coinness.com">
-            <div style="background-image: url('/images/media_logo/ic_coinness.png');"></div>
+          <div style="background-image: url('/images/media_logo/ic_coinness.png');"></div>
         </a>
       </div>
       <div class="col">
         <a href="https://www.coinpress.co.kr">
-            <div style="background-image: url('/images/media_logo/ic_coinpress.jpg');" />
+          <div style="background-image: url('/images/media_logo/ic_coinpress.jpg');" />
         </a>
       </div>
       <div class="col">
         <a href="https://www.moneynet.co.kr/info_board">
-            <div style="background-image: url('/images/media_logo/ic_moneynet.png');" />
+          <div style="background-image: url('/images/media_logo/ic_moneynet.png');" />
         </a>
       </div>
       <div class="col">
         <a href="https://coincode.kr">
-            <div style="background-image: url('/images/media_logo/ic_coincode.png');" />
+          <div style="background-image: url('/images/media_logo/ic_coincode.png');" />
         </a>
       </div>
       <div class="col">
         <a href="http://www.hash.kr">
-            <div style="background-image: url('/images/media_logo/ic_hashnet.png');" />
+          <div style="background-image: url('/images/media_logo/ic_hashnet.png');" />
         </a>
       </div>
-
       <div class="col">
         <a href="https://coinbus.co.kr">
           <div style="background-image: url('/images/media_logo/ic_coinbus.png');" />
@@ -305,7 +294,6 @@
           <div style="background-image: url('/images/media_logo/ic_blockchainvalley.png');" />
         </a>
       </div>
-
       <div class="col">
         <a href="http://bitweb.co.kr">
             <div style="background-image: url('/images/media_logo/ic_bitweb.png');" />
@@ -330,10 +318,11 @@
 </template>
 
 <style scoped>
+h5 { border-bottom: 4px solid #264fa3; }
 .table td, .table th { border-bottom: 1px solid #aaa;border-top: 0; }
 .ad-col { overflow: hidden;height: 60px;padding: 0;}
 .media_logo { background-size: 80px; background-repeat: no-repeat;
-    background-position: 100% 96%; }
+background-position: 100% 96%; }
 .media_logo a { color: rgba(0,0,0,0.7);width: 100%; }
 .tkp { background-image: url('/images/media_logo/ic_tkp.svg'); }
 .dst { background-image: url('/images/media_logo/ic_dst.png'); }
