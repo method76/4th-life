@@ -3,22 +3,23 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'The 4th Life - 포스라이프',
+    title: '따끈따끈 블록체인 뉴스 포탈 - 포스라이프 🚀',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
-      { hid: 'description', name: 'description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
+      { hid: 'keywords', name: 'keywords', content: '4th life,포스라이프,kittychain,키티체인,미디어,블록체인,blockchain,암호화폐,cryptocurrency,김치프리미엄,스티커,sticker' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       { hid: 'og:site_name', property: 'og:site_name', content: 'The 4th Life' },
       { hid: 'og:url', property: 'og:url', content: 'https://4th.life' },
       { hid: 'twitter:card', name: 'twitter:card', content: 'The 4th Life' },
       { hid: 'twitter:site', name: 'twitter:site', content: 'https://4th.life' },
       { hid: 'twitter:creator', name: 'twitter:creator', content: '@kittychain_inc' },
-      { hid: 'og:title', property: 'og:title', content: 'The 4th Life - 포스라이프' },
       { hid: 'og:image', property: 'og:image', content: 'https://4th.life/4th_rep.png' },
-      { hid: 'og:description', property: 'og:description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
-      { hid: 'twitter:title', name: 'twitter:title', content: 'The 4th Life - 포스라이프' },
-      { hid: 'twitter:description', name: 'twitter:description', content: '최신 블록체인 뉴스들을 모아봤어.. - 포스라이프' },
+      { hid: 'og:title', property: 'og:title', content: '따끈따끈 블록체인 뉴스 포탈 - 포스라이프' },
+      { hid: 'twitter:title', name: 'twitter:title', content: '따끈따끈 블록체인 뉴스 포탈 - 포스라이프' },
+      { hid: 'description', name: 'description', content: '최신 블록체인 뉴스들을 모아봤어 - 포스라이프' },
+      { hid: 'og:description', property: 'og:description', content: '최신 블록체인 뉴스들을 모아봤어 - 포스라이프' },
+      { hid: 'twitter:description', name: 'twitter:description', content: '최신 블록체인 뉴스들을 모아봤어 - 포스라이프' },
       { hid: 'twitter:image:src', name: 'twitter:image:src', content: 'https://4th.life/4th_rep.png' }
     ],
     script: [
