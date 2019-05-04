@@ -338,6 +338,20 @@ background-position: 100% 96%; }
 import axios from '../plugins/axios'
 
 export default {
+  head() {
+    return {
+      title: '포스라이프 - 블록체인 미디어 포탈 🚀',
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: '포스라이프 - 블록체인 미디어 포탈 🚀' },
+        { hid: 'twitter:title', name: 'twitter:title', content: '포스라이프 - 블록체인 미디어 포탈 🚀' },
+        { hid: 'og:image', property: 'og:image', content: 'https://4th.life/4th_rep.png' },
+        { hid: 'twitter:image:src', name: 'twitter:image:src', content: 'https://4th.life/4th_rep.png' },
+        { hid: 'description', name: 'description', content: '블록체인 뉴스와 기술 서비스 제공' },
+        { hid: 'og:description', property: 'og:description', content: '블록체인 뉴스와 기술 서비스 제공' },
+        { hid: 'twitter:description', name: 'twitter:description', content: '블록체인 뉴스와 기술 서비스 제공' },
+      ]
+    }
+  },
   async asyncData ({ params }) {
     return axios.get('/api/news').then((res) => {
       return { news1: res.data.news1, news2: res.data.news2, news3: res.data.news3,

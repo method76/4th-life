@@ -5,7 +5,7 @@
       <div class="col-12 bg-slogan">
         <div class="slogan-wrapper">
           <h5>귀사의 비즈니스를 위한</h5>
-          <h1>블록체인 솔루션</h1>
+          <h1>블록체인<br>기술 서비스</h1>
           <h5>컨설팅, 솔루션 & 서비스</h5>
         </div>
       </div>
@@ -13,7 +13,7 @@
     <div class="row solutions">
       <div class="col-lg-3 col-6 solution-col">
         <div class="solution-inner">
-          <img src="/images/solution/ic_engine.jpg">
+          <img src="/images/solution/ic_engine.png">
           <div class="title-wrapper">
             <h5>블록체인 API 엔진</h5>
             <p>다양한 퍼블릿, 또는 프라이빗 체인과 공통의 방법으로 연동할 수 있는 API 엔진입니다</p>
@@ -56,6 +56,8 @@
 .solutions { padding: 0 20px; }
 .solution-col { padding: 0; margin-top: 20px; }
 .solution-col h5 { margin-bottom: 0; color: white; }
+.solution-inner img { width: 100%; }
+.title-wrapper p { color: white; }
 </style>
 
 <script>

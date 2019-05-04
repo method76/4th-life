@@ -1,7 +1,8 @@
 <template>
   <div class="container-fluid footer row justify-content-center align-items-center m-0">
     <div class="col-lg-6 col-12 footer-copy">
-      <div>포스라이프 서비스는 키티체인™에서 제공합니다<br>© 2019 Kittychain. All rights reserved.</div>
+      <div>포스라이프 서비스는 키티체인™에서 제공합니다<br>© 2019 Kittychain. All rights reserved.<br>
+        kittychain@naver.com</div>
     </div>
     <div class="col-lg-6 col-12">
       <div class="float-right footer-right">

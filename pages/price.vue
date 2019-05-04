@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-12 bg-slogan">
         <div class="slogan-wrapper">
-          <h1>암호화폐 시세 프리미엄</h1>
+          <h1>암호화폐 시세<br>프리미엄</h1>
         </div>
       </div>
     </div>
@@ -13,7 +13,7 @@
           <C3AreaChart></C3AreaChart>
       </div>
       <div class="col-lg-6 col-sm-12">
-        <div class="float-right">기준시: {{ TIME_KR }} UTC 00:00</div>
+        <h5 class="float-right std-time">기준시: {{ TIME_KR }} UTC+00</h5>
         <table class="w-100 table table-striped table-bordered table-hover">
           <thead class="thead-dark">
           <tr>
@@ -80,6 +80,7 @@ th, td.table-success { text-align: center;line-height: 1.5;vertical-align: middl
 td.price { font-size: 15px;line-height: 1.5;padding: .3rem .5rem; }
 .bg-slogan { background-image: url(/images/price/bg_kimchi.jpg); }
 .premium-wrapper h1, .premium-wrapper h5 { margin-bottom: 0; color: white; }
+.std-time { padding: 20px 20px 0; }
 </style>
 
 <script>
@@ -92,10 +93,10 @@ export default {
   },
   head() {
     return {
-      title: '포스라이프 - 암호화폐 가격 프리미엄 조회',
+      title: '포스라이프 - 암호화폐 시세 프리미엄',
       meta: [
-        {hid: 'og:title', property: 'og:title', content: '포스라이프 - 암호화폐 가격 프리미엄 조회'},
-        {hid: 'twitter:title', name: 'twitter:title', content: '포스라이프 - 암호화폐 가격 프리미엄 조회'},
+        {hid: 'og:title', property: 'og:title', content: '포스라이프 - 암호화폐 시세 프리미엄'},
+        {hid: 'twitter:title', name: 'twitter:title', content: '포스라이프 - 암호화폐 시세 프리미엄'},
       ]
     }
   },
