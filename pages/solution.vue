@@ -2,7 +2,7 @@
   <!-- Main Content -->
   <div class="body_scroll">
     <div class="row">
-      <div class="col-12 bg-solutions">
+      <div class="col-12 bg-slogan">
         <div class="slogan-wrapper">
           <h5>귀사의 비즈니스를 위한</h5>
           <h1>블록체인 솔루션</h1>
@@ -52,22 +52,24 @@
 </template>
 
 <style scoped>
-.bg-solutions { background-image: url(/images/solution/bg_solutions.jpg);
-  background-position-y: center; height: 500px; position: relative; }
+.bg-slogan { background-image: url(/images/solution/bg_solutions.jpg); }
 .solutions { padding: 0 20px; }
 .solution-col { padding: 0; margin-top: 20px; }
 .solution-col h5 { margin-bottom: 0; color: white; }
-.slogan-wrapper { color: white; width: 350px; text-align: center; margin: 170px auto; }
-.solution-inner { border: 1px solid #aaa; margin-left: 10px; margin-right: 10px; padding: 0;
-  height: 330px; position: relative; }
-.title-wrapper { width: 100%; bottom: 0; background-color: rgba(0,0,0,.3); padding: 5px 8px;
-  position: absolute; }
-.title-wrapper p { margin-bottom: 0; }
 </style>
 
 <script>
 export default {
   components: {
-  }
+  },
+  head() {
+    return {
+      title: '포스라이프 - 블록체인 기술 서비스',
+      meta: [
+        {hid: 'og:title', property: 'og:title', content: '포스라이프 - 블록체인 기술 서비스'},
+        {hid: 'twitter:title', name: 'twitter:title', content: '포스라이프 - 블록체인 기술 서비스'},
+      ]
+    }
+  },
 }
 </script>

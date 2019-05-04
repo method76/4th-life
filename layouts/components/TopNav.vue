@@ -11,41 +11,23 @@
       aria-controls="navbarSupportedContent"
       aria-expanded="false"
       aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon" />
+      <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div
-      id="navbarSupportedContent"
-      class="collapse navbar-collapse"
-    >
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
-          <nuxt-link to="/" active-class="active" class="nav-item"
-            tag="li" exact>
-              <a class="nav-link">미디어</a>
-          </nuxt-link>
-        <nuxt-link
-          to="/price" active-class="active" class="nav-item" tag="li">
+        <nuxt-link to="/" active-class="active" class="nav-item" tag="li" exact>
+          <a class="nav-link">미디어</a>
+        </nuxt-link>
+        <nuxt-link to="/price" active-class="active" class="nav-item" tag="li">
           <a class="nav-link">김치프리미엄</a>
         </nuxt-link>
-        <nuxt-link
-          to="/souvenir"
-          active-class="active"
-          class="nav-item"
-          tag="li"
-        >
-          <a class="nav-link">
-            쇼핑몰
-          </a>
+        <nuxt-link to="/souvenir" active-class="active" class="nav-item" tag="li">
+          <a class="nav-link">키티체인쇼핑몰</a>
         </nuxt-link>
-          <nuxt-link
-            to="/solution"
-            active-class="active"
-            class="nav-item"
-            tag="li">
-              <a class="nav-link">
-                  기술서비스
-              </a>
-          </nuxt-link>
+        <nuxt-link to="/solution" active-class="active" class="nav-item" tag="li">
+          <a class="nav-link">기술서비스</a>
+        </nuxt-link>
       </ul>
     </div>
   </nav>

@@ -338,19 +338,6 @@ background-position: 100% 96%; }
 import axios from '../plugins/axios'
 
 export default {
-  head() {
-    return {
-      title: '따끈따끈한 블록체인 뉴스 포탈 - 포스라이프 🚀',
-      meta: [
-        {hid: 'og:image', property: 'og:image', content: 'https://4th.life/4th_rep.png'},
-        {hid: 'twitter:image:src', name: 'twitter:image:src', content: 'https://4th.life/4th_rep.png'},
-        {hid: 'og:title', property: 'og:title', content: '따끈따끈 블록체인 뉴스 포탈 - 포스라이프'},
-        {hid: 'twitter:title', name: 'twitter:title', content: '따끈따끈 블록체인 뉴스 포탈 - 포스라이프'},
-        {hid: 'og:description', property: 'og:description', content: '최신 블록체인 뉴스들을 모아봤어 - 포스라이프'},
-        {hid: 'twitter:description', name: 'twitter:description', content: '최신 블록체인 뉴스들을 모아봤어 - 포스라이프'}
-      ]
-    }
-  },
   async asyncData ({ params }) {
     return axios.get('/api/news').then((res) => {
       return { news1: res.data.news1, news2: res.data.news2, news3: res.data.news3,

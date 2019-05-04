@@ -1,75 +1,74 @@
 <template>
   <!-- Main Content -->
   <div class="body_scroll">
-    <div class="block-header">
-      <div class="row">
-        <div class="col-12">
-          <h2>가격비교 {{ TIME_KR }}</h2>
+    <div class="row">
+      <div class="col-12 bg-slogan">
+        <div class="slogan-wrapper">
+          <h1>암호화폐 시세 프리미엄</h1>
         </div>
       </div>
     </div>
-    <div class="container-fluid product-grid">
-      <div class="row clearfix">
-        <div class="col-lg-6 col-sm-12">
-            <C3AreaChart></C3AreaChart>
-        </div>
-        <div class="col-lg-6 col-sm-12">
-            <table class="w-100 table table-striped table-bordered table-hover">
-                <thead class="thead-dark">
-                <tr>
-                    <th>{{ USD_KRW }}/$</th>
-                    <th><img src="/images/crypto/ic_ubt.svg" height="20"></th>
-                    <th><img src="/images/crypto/ic_gio.svg" height="25"></th>
-                    <th><img src="/images/crypto/ic_bfx.svg" height="25"></th>
-                    <th><img src="/images/crypto/ic_kimchi.png" height="30"></th>
-                </tr>
-                </thead>
-                <tbody id="prices">
-                <tr>
-                    <td class="table-success">BTC</td>
-                    <td class="price">{{ UBT_BTC }}<br>${{ UBT_BTC_USD }}</td>
-                    <td class="price">{{ GIO_BTC }}<br>${{ GIO_BTC_USD }}</td>
-                    <td class="price">{{ BFX_BTC }}<br>${{ BFX_BTC_USD }}</td>
-                    <td class="table-primary">{{ GAP_BTC }}</td>
-                </tr>
-                <tr>
-                    <td class="table-success">ETH</td>
-                    <td class="price">{{ UBT_ETH }}<br>${{ UBT_ETH_USD }}</td>
-                    <td class="price">{{ GIO_ETH }}<br>${{ GIO_ETH_USD }}</td>
-                    <td class="price">{{ BFX_ETH }}<br>${{ BFX_ETH_USD }}</td>
-                    <td class="table-primary">{{ GAP_ETH }}</td>
-                </tr>
-                <tr>
-                    <td class="table-success">XRP</td>
-                    <td class="price">{{ UBT_XRP }}<br>${{ UBT_XRP_USD }}</td>
-                    <td class="price">{{ GIO_XRP }}<br>${{ GIO_XRP_USD }}</td>
-                    <td class="price">{{ BFX_XRP }}<br>${{ BFX_XRP_USD }}</td>
-                    <td class="table-primary">{{ GAP_XRP }}</td>
-                </tr>
-                <tr>
-                    <td class="table-success">XLM</td>
-                    <td class="price">{{ UBT_XLM }}<br>${{ UBT_XLM_USD }}</td>
-                    <td class="price">{{ GIO_XLM }}<br>${{ GIO_XLM_USD }}</td>
-                    <td class="price">{{ BFX_XLM }}<br>${{ BFX_XLM_USD }}</td>
-                    <td class="table-primary">{{ GAP_XRP }}</td>
-                </tr>
-                <tr>
-                    <td class="table-success">EOS</td>
-                    <td class="price">{{ UBT_EOS }}<br>${{ UBT_EOS_USD }}</td>
-                    <td class="price">{{ GIO_EOS }}<br>${{ GIO_EOS_USD }}</td>
-                    <td class="price">{{ BFX_EOS }}<br>${{ BFX_EOS_USD }}</td>
-                    <td class="table-primary">{{ GAP_EOS }}</td>
-                </tr>
-                <tr>
-                    <td class="table-success">LTC</td>
-                    <td class="price">{{ UBT_LTC }}<br>${{ UBT_LTC_USD }}</td>
-                    <td class="price">{{ GIO_LTC }}<br>${{ GIO_LTC_USD }}</td>
-                    <td class="price">{{ BFX_LTC }}<br>${{ BFX_LTC_USD }}</td>
-                    <td class="table-primary">{{ GAP_LTC }}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="row contents-grid">
+      <div class="col-lg-6 col-sm-12">
+          <C3AreaChart></C3AreaChart>
+      </div>
+      <div class="col-lg-6 col-sm-12">
+        <div class="float-right">기준시: {{ TIME_KR }} UTC 00:00</div>
+        <table class="w-100 table table-striped table-bordered table-hover">
+          <thead class="thead-dark">
+          <tr>
+            <th>{{ USD_KRW }}/$</th>
+            <th><img src="/images/crypto/ic_ubt.svg" height="20"></th>
+            <th><img src="/images/crypto/ic_gio.svg" height="25"></th>
+            <th><img src="/images/crypto/ic_bfx.svg" height="25"></th>
+            <th><img src="/images/crypto/ic_kimchi.png" height="30"></th>
+          </tr>
+          </thead>
+          <tbody id="prices">
+          <tr>
+            <td class="table-success">BTC</td>
+            <td class="price">{{ UBT_BTC }}<br>${{ UBT_BTC_USD }}</td>
+            <td class="price">{{ GIO_BTC }}<br>${{ GIO_BTC_USD }}</td>
+            <td class="price">{{ BFX_BTC }}<br>${{ BFX_BTC_USD }}</td>
+            <td class="table-primary">{{ GAP_BTC }}</td>
+          </tr>
+          <tr>
+            <td class="table-success">ETH</td>
+            <td class="price">{{ UBT_ETH }}<br>${{ UBT_ETH_USD }}</td>
+            <td class="price">{{ GIO_ETH }}<br>${{ GIO_ETH_USD }}</td>
+            <td class="price">{{ BFX_ETH }}<br>${{ BFX_ETH_USD }}</td>
+            <td class="table-primary">{{ GAP_ETH }}</td>
+          </tr>
+          <tr>
+            <td class="table-success">XRP</td>
+            <td class="price">{{ UBT_XRP }}<br>${{ UBT_XRP_USD }}</td>
+            <td class="price">{{ GIO_XRP }}<br>${{ GIO_XRP_USD }}</td>
+            <td class="price">{{ BFX_XRP }}<br>${{ BFX_XRP_USD }}</td>
+            <td class="table-primary">{{ GAP_XRP }}</td>
+          </tr>
+          <tr>
+            <td class="table-success">XLM</td>
+            <td class="price">{{ UBT_XLM }}<br>${{ UBT_XLM_USD }}</td>
+            <td class="price">{{ GIO_XLM }}<br>${{ GIO_XLM_USD }}</td>
+            <td class="price">{{ BFX_XLM }}<br>${{ BFX_XLM_USD }}</td>
+            <td class="table-primary">{{ GAP_XRP }}</td>
+          </tr>
+          <tr>
+            <td class="table-success">EOS</td>
+            <td class="price">{{ UBT_EOS }}<br>${{ UBT_EOS_USD }}</td>
+            <td class="price">{{ GIO_EOS }}<br>${{ GIO_EOS_USD }}</td>
+            <td class="price">{{ BFX_EOS }}<br>${{ BFX_EOS_USD }}</td>
+            <td class="table-primary">{{ GAP_EOS }}</td>
+          </tr>
+          <tr>
+            <td class="table-success">LTC</td>
+            <td class="price">{{ UBT_LTC }}<br>${{ UBT_LTC_USD }}</td>
+            <td class="price">{{ GIO_LTC }}<br>${{ GIO_LTC_USD }}</td>
+            <td class="price">{{ BFX_LTC }}<br>${{ BFX_LTC_USD }}</td>
+            <td class="table-primary">{{ GAP_LTC }}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -79,6 +78,8 @@
 td { text-align: right; }
 th, td.table-success { text-align: center;line-height: 1.5;vertical-align: middle; }
 td.price { font-size: 15px;line-height: 1.5;padding: .3rem .5rem; }
+.bg-slogan { background-image: url(/images/price/bg_kimchi.jpg); }
+.premium-wrapper h1, .premium-wrapper h5 { margin-bottom: 0; color: white; }
 </style>
 
 <script>
@@ -88,6 +89,15 @@ import C3AreaChart from '../layouts/components/C3AreaChart'
 export default {
   components: {
     C3AreaChart
+  },
+  head() {
+    return {
+      title: '포스라이프 - 암호화폐 가격 프리미엄 조회',
+      meta: [
+        {hid: 'og:title', property: 'og:title', content: '포스라이프 - 암호화폐 가격 프리미엄 조회'},
+        {hid: 'twitter:title', name: 'twitter:title', content: '포스라이프 - 암호화폐 가격 프리미엄 조회'},
+      ]
+    }
   },
   mounted () {
     // to init the graph call:
