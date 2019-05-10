@@ -15,7 +15,6 @@
     </button>
 
     <div id="navbarSupportedContent" class="collapse navbar-collapse">
-      <img class="m-menu-img mr-auto" src="/images/layout/ic_4th.png">
       <ul class="navbar-nav mr-auto">
         <nuxt-link to="/" active-class="active" class="nav-item" tag="li" exact>
           <a class="nav-link">미디어포탈</a>
@@ -27,7 +26,7 @@
           <a class="nav-link">암호화폐스티커</a>
         </nuxt-link>
         <nuxt-link to="/solution" active-class="active" class="nav-item" tag="li">
-          <a class="nav-link">기술서비스</a>
+          <a class="nav-link">컨설팅&솔루션</a>
         </nuxt-link>
       </ul>
     </div>
@@ -40,9 +39,13 @@
     padding: 0 24px !important; }
 .btn-primary:not(:disabled):not(.disabled):active { margin-right: -70px; }
 .btn.mobile_menu { color: #fff;background-color: #ddd;border: 1px solid #666;color: #888; }
-#navbarSupportedContent > ul { margin-top: 10px; margin-left: 150px; padding-bottom: 10px;
-  float: right; }
+#navbarSupportedContent > ul { margin-top: 10px; margin-left: 150px; padding-bottom: 10px; }
 #navbarSupportedContent > ul > li { max-width: 150px; }
 .navbar .navbar-nav .nav-link:not(.btn) { font-size: 1em;background-color: inherit; }
-.m-menu-img { width: 120px; float: left; opacity: .11; margin-top: 30px; margin-left: 6px; }
+.m-menu-img { width: 120px; position: absolute; opacity: .11; margin-top: 30px; margin-left: 6px; }
+@media screen and (max-width: 400px) {
+  .navbar-nav { float: right; }
+  .navbar-collapse { background-image: url(/images/layout/ic_4th.png); background-repeat: no-repeat;
+    background-size: 120px; background-position-y: 30px; }
+}
 </style>
