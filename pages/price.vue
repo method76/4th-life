@@ -10,7 +10,7 @@
     </div>
     <div class="row contents-grid">
       <div class="col-lg-6 col-sm-12">
-          <C3AreaChart></C3AreaChart>
+        <TVChartContainer />
       </div>
       <div class="col-lg-6 col-sm-12">
         <h5 class="float-right std-time">기준시: {{ TIME_KR }} UTC+00</h5>
@@ -85,11 +85,12 @@ td.price { font-size: 15px;line-height: 1.5;padding: .3rem .5rem; }
 
 <script>
 import axios from '../plugins/axios'
-import C3AreaChart from '../layouts/components/C3AreaChart'
+import TVChartContainer from '../layouts/components/TVChartContainer.vue'
+// import C3AreaChart from '../layouts/components/C3AreaChart'
 
 export default {
   components: {
-    C3AreaChart
+    TVChartContainer
   },
   head() {
     return {
