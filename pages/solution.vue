@@ -11,34 +11,35 @@
       </div>
     </div>
     <div class="row solutions">
-      <div class="col-lg-3 col-6 solution-col">
+      <div class="col-lg-3 col-12 solution-col">
         <div class="solution-inner">
           <img src="/images/solution/ic_engine.png">
           <div class="title-wrapper">
-            <h5>블록체인 API 엔진</h5>
-            <p>다양한 퍼블릿, 또는 프라이빗 체인과 공통의 방법으로 연동할 수 있는 API 엔진입니다</p>
+            <h5>Bitwise Agent</h5>
+            <p>다양한 퍼블릿 또는 프라이빗 체인과 공통의 방법으로 동기화 하고 API가 연동되는, 마이크로서비스 기반의 애드온 에이전트입니다</p>
+            <p>Bitcoin, BitcoinCash, Litecoin, Dogecoin, Ethereum, ERC-20, Multichain 지원</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-6 solution-col">
+      <div class="col-lg-3 col-12 solution-col">
         <div class="solution-inner">
           <img src="/images/solution/ic_mobile_wallet.jpg">
           <div class="title-wrapper">
-            <h5>암호화폐 모바일 월렛</h5>
-            <p>키티체인의 API 엔진, 또는 귀사에서 개발한 월렛 백엔드와 연결할 수 있는 모바일 앱입니다</p>
+            <h5>Bitwise Mobile</h5>
+            <p>Bitwise Agent, 또는 귀사에서 운용하고 있는 블록체인(암호화폐 웹지갑) 서비스와 연결되는 모바일 지갑입니다 (안드로이드)</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-6 solution-col">
+      <div class="col-lg-3 col-12 solution-col">
         <div class="solution-inner">
           <img src="/images/solution/ic_private_chain.png">
           <div class="title-wrapper">
-            <h5>사설 체인 구축</h5>
-            <p>멀티체인, 이더리움, 하이퍼레저, Exonum 등 오픈소스 블록체인을 이용하여 블록체인을 구축합니다</p>
+            <h5>사설체인 구축</h5>
+            <p>멀티체인, 이더리움, 하이퍼레저, Exonum 등 오픈소스 블록체인을 이용하여 공개형 또는 사설 블록체인을 구축합니다</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-6 solution-col">
+      <div class="col-lg-3 col-12 solution-col">
         <div class="solution-inner">
           <img src="/images/solution/ic_token.jpg">
           <div class="title-wrapper">

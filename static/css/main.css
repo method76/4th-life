@@ -11,7 +11,7 @@ a:hover, a:focus { color: inherit; }
 .contents-wrapper { min-height: 100%; margin-top: 57px; overflow: hidden; }
 .slogan-wrapper { color: white; width: 380px; text-align: center; margin: 170px auto; }
 .slogan-wrapper h1 { margin-bottom: 5px; border-bottom: 2px solid rgba(255,255,255,.5); }
-.bg-slogan { overflow: hidden; background-position-y: 57px; height: 500px; position: relative;
+.bg-slogan { overflow: hidden; background-position-y: 57px; height: 440px; position: relative;
   background-attachment: fixed; }
 .solution-inner { border: 1px solid #aaa; margin-left: 10px; margin-right: 10px; padding: 0;
   height: 330px; position: relative; }

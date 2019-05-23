@@ -19,14 +19,14 @@
         <nuxt-link to="/" active-class="active" class="nav-item" tag="li" exact>
           <a class="nav-link">미디어포탈</a>
         </nuxt-link>
+        <nuxt-link to="/solution" active-class="active" class="nav-item" tag="li">
+          <a class="nav-link">블록체인/암호화폐 솔루션</a>
+        </nuxt-link>
         <nuxt-link to="/price" active-class="active" class="nav-item" tag="li">
-          <a class="nav-link">김치프리미엄</a>
+          <a class="nav-link">암호화폐시세 프리미엄</a>
         </nuxt-link>
         <nuxt-link to="/souvenir" active-class="active" class="nav-item" tag="li">
-          <a class="nav-link">암호화폐스티커</a>
-        </nuxt-link>
-        <nuxt-link to="/solution" active-class="active" class="nav-item" tag="li">
-          <a class="nav-link">컨설팅&솔루션</a>
+          <a class="nav-link">암호화폐 스티커</a>
         </nuxt-link>
       </ul>
     </div>
